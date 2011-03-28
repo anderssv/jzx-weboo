@@ -9,7 +9,7 @@
 	<groupId>no.f12.jzx.weboo</groupId>
 	<artifactId>weboo-serverpackage</artifactId>
 	<packaging>jar</packaging>
-	<name>webapp-jetty-serverpackage</name>
+	<name>weboo-jetty-serverpackage</name>
 	
 	<properties>
 		<!-- Work around to enable changes when creating archetype -->

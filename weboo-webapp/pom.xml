@@ -9,7 +9,7 @@
 	<groupId>no.f12.jzx.weboo</groupId>
 	<artifactId>weboo-webapp</artifactId>
 	<packaging>war</packaging>
-	<name>webapp-jetty-webapp</name>
+	<name>weboo-jetty-webapp</name>
 	
 	<build>
 		<plugins>
