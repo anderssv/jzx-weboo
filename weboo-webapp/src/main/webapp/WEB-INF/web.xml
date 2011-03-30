@@ -26,7 +26,7 @@
 
 	<servlet-mapping>
 		<servlet-name>main</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/organization/*</url-pattern>
 	</servlet-mapping>
 
 	<filter>

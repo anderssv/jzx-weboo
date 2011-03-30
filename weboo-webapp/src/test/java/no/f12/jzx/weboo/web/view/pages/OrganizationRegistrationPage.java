@@ -19,12 +19,13 @@ public class OrganizationRegistrationPage {
 
 	public void goTo() {
 		driver.get(applicationUrl + "organization");
-		assertEquals(driver.getTitle(), "Register Organization");
+		assertEquals("Register Organization", driver.getTitle());
 	}
 
 	public void fillIn(Organization org) {
 		driver.findElement(By.id("organization.name")).sendKeys(org.getName());
-		driver.findElement(By.id("organization.organizationNumber")).sendKeys(org.getOrganizationNumber().getValue());
+		driver.findElement(By.id("organization.organizationNumber")).sendKeys(
+				org.getOrganizationNumber().getValue());
 	}
 
 }
