@@ -23,8 +23,8 @@ public class OrganizationRegistrationPage {
 	}
 
 	public void fillIn(Organization org) {
-		driver.findElement(By.id("organization.name")).sendKeys(org.getName());
-		driver.findElement(By.id("organization.organizationNumber")).sendKeys(
+		driver.findElement(By.id("name")).sendKeys(org.getName());
+		driver.findElement(By.id("organizationNumber")).sendKeys(
 				org.getOrganizationNumber().getValue());
 	}
 

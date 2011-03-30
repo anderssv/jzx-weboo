@@ -5,6 +5,11 @@ public class Organization {
 	private String name;
 	private OrganizationNumber organizationNumber;
 
+	@SuppressWarnings("unused")
+	private Organization(){
+		
+	}
+	
 	public Organization(OrganizationNumber organizationNumber, String organizationName) {
 		this.organizationNumber = organizationNumber;
 		this.name = organizationName;
