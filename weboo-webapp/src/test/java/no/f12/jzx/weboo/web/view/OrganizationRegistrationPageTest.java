@@ -3,6 +3,7 @@ package no.f12.jzx.weboo.web.view;
 import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.domain.OrganizationNumber;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
+import no.f12.jzx.weboo.web.view.pages.OverviewPage;
 
 import org.junit.Test;
 
@@ -16,6 +17,10 @@ public class OrganizationRegistrationPageTest extends AbstractWebTest {
 		
 		orgPage.goTo();
 		orgPage.fillIn(org);
+		orgPage.submit();
+		
+		OverviewPage overviewPage = new OverviewPage(getDriver(), getApplicationUrl());
+		overviewPage.assertAt();
 	}
 
 }

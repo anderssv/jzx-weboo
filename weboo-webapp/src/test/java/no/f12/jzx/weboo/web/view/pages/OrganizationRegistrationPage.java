@@ -28,4 +28,8 @@ public class OrganizationRegistrationPage {
 				org.getOrganizationNumber().getValue());
 	}
 
+	public void submit() {
+		driver.findElement(By.id("save")).click();
+	}
+
 }

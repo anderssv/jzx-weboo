@@ -12,6 +12,8 @@
 	<form:form commandName="organization">
 		<label>Organization name:</label><form:input path="name" />
 		<label>Organization number:</label><form:input path="organizationNumber" />
+		
+		<input type="submit" value="Save" id="save" />
 	</form:form>
 
 </body>
