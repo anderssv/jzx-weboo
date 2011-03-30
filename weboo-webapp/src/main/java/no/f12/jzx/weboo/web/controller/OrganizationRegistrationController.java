@@ -10,7 +10,7 @@ public class OrganizationRegistrationController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String showNewInput() {
-		return "editOrganization";
+		return "organization/organizationForm";
 	}
 
 }
