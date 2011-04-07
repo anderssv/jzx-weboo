@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/organization")
 public class OrganizationRegistrationController {
-	
-	@RequestMapping(method=RequestMethod.GET)
+
+	@RequestMapping(method = RequestMethod.GET)
 	public String showNewInput(@ModelAttribute Organization organization) {
 		return "organization/organizationForm";
 	}
