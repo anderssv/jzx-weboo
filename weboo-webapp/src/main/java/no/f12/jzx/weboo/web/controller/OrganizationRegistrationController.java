@@ -15,5 +15,10 @@ public class OrganizationRegistrationController {
 	public String showNewInput(@ModelAttribute Organization organization) {
 		return "organization/organizationForm";
 	}
-
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public String showOverView(@ModelAttribute Organization organization){
+		return "organization/overviewForm";
+		
+	}
 }
