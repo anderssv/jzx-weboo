@@ -120,7 +120,7 @@
 			<dependency>
 				<artifactId>guava</artifactId>
 				<groupId>com.google.guava</groupId>
-				<version>r07</version>
+				<version>r09</version>
 			</dependency>
 
 			<dependency>
