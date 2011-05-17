@@ -76,13 +76,19 @@
 			<dependency>
 				<groupId>no.f12.jzx.weboo</groupId>
 				<artifactId>weboo-business</artifactId>
-				<version>1.0-SNAPSHOT</version>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>no.f12.jzx.weboo</groupId>
+				<artifactId>weboo-business</artifactId>
+				<version>${project.version}</version>
+				<type>test-jar</type>
 			</dependency>
 
 			<dependency>
 				<groupId>no.f12.jzx.weboo</groupId>
 				<artifactId>weboo-jettyserver</artifactId>
-				<version>1.0-SNAPSHOT</version>
+				<version>${project.version}</version>
 				<scope>runtime</scope>
 			</dependency>
 
