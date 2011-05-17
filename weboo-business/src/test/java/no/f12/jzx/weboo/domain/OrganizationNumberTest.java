@@ -4,7 +4,7 @@ import static junit.framework.Assert.*;
 
 import org.junit.Test;
 
-public class OrganizationNumberValidatorTest {
+public class OrganizationNumberTest {
 
 	@Test
 	public void shouldValidateCorrectly() {
