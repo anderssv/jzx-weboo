@@ -8,19 +8,33 @@ import no.f12.jzx.weboo.web.view.pages.OverviewPage;
 import org.junit.Test;
 
 public class OrganizationRegistrationPageTest extends AbstractWebTest {
-	
+
 	@Test
 	public void shouldEnableRegistrationOfOrganization() {
 		Organization org = new Organization(new OrganizationNumber("123456789"), "My Org");
-		
+
 		OrganizationRegistrationPage orgPage = new OrganizationRegistrationPage(getDriver(), getApplicationUrl());
-		
+
 		orgPage.goTo();
 		orgPage.fillIn(org);
 		orgPage.submit();
-		
+
 		OverviewPage overviewPage = new OverviewPage(getDriver(), getApplicationUrl());
 		overviewPage.assertAt();
+	}
+
+	@Test
+	public void shouldDisplayErrorMessagesWhenValidationFails() {
+		Organization org = new Organization(new OrganizationNumber("123456789"), "");
+
+		OrganizationRegistrationPage orgPage = new OrganizationRegistrationPage(getDriver(), getApplicationUrl());
+
+		orgPage.goTo();
+		orgPage.fillIn(org);
+		orgPage.submit();
+
+		orgPage.assertAt();
+		orgPage.assertErrors();
 	}
 
 }

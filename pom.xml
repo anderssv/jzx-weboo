@@ -65,6 +65,10 @@
 			<artifactId>guava</artifactId>
 			<groupId>com.google.guava</groupId>
 		</dependency>
+		<dependency>
+			<artifactId>hibernate-validator</artifactId>
+			<groupId>org.hibernate</groupId>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -111,6 +115,7 @@
 				<groupId>com.google.guava</groupId>
 				<version>r07</version>
 			</dependency>
+
 			<dependency>
 				<artifactId>log4j</artifactId>
 				<groupId>log4j</groupId>
@@ -120,6 +125,17 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-log4j12</artifactId>
 				<version>1.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.6.1</version>
+			</dependency>
+
+			<dependency>
+				<artifactId>hibernate-validator</artifactId>
+				<groupId>org.hibernate</groupId>
+				<version>4.0.2.GA</version>
 			</dependency>
 
 			<dependency>

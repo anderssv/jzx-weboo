@@ -5,11 +5,15 @@
 
 <html>
 <head>
-<title>Register Organization</title>
+	<title>Register Organization</title>
 </head>
 <body>
 
+
 	<form:form commandName="organization">
+		
+		<form:errors id="errors" path="*" />
+		
 		<label>Organization name:</label><form:input path="name" />
 		<label>Organization number:</label><form:input path="organizationNumber" />
 		
