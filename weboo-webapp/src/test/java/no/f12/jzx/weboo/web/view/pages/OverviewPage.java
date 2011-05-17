@@ -1,7 +1,5 @@
 package no.f12.jzx.weboo.web.view.pages;
 
-import junit.framework.Assert;
-
 import org.openqa.selenium.WebDriver;
 
 public class OverviewPage extends AbstractPage {
@@ -10,8 +8,8 @@ public class OverviewPage extends AbstractPage {
 		super(driver, applicationUrl);
 	}
 
-	public void assertAt() {
-		Assert.assertEquals("My Overview", getDriver().getTitle());
+	public String getTitle() {
+		return "My Overview";
 	}
 
 }
