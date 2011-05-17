@@ -8,8 +8,7 @@ public class Organization {
 	private String name;
 	private OrganizationNumber organizationNumber;
 
-	@SuppressWarnings("unused")
-	private Organization(){
+	protected Organization(){
 		
 	}
 	

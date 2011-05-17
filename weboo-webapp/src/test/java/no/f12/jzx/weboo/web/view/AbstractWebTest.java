@@ -3,6 +3,7 @@ package no.f12.jzx.weboo.web.view;
 import java.io.File;
 
 import no.f12.jzx.weboo.jetty.WebServer;
+import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 
 import org.junit.After;
 import org.junit.Before;
@@ -48,5 +49,9 @@ public abstract class AbstractWebTest {
 
 	protected WebDriver getDriver() {
 		return this.driver;
+	}
+
+	protected OrganizationRegistrationPage organizationPage() {
+		return new OrganizationRegistrationPage(getDriver(), getApplicationUrl());
 	}
 }
