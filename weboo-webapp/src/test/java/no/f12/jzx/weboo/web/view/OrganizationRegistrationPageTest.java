@@ -19,7 +19,7 @@ public class OrganizationRegistrationPageTest extends AbstractWebTest {
 		orgPage.fillIn(org);
 		orgPage.submit();
 
-		OverviewPage overviewPage = new OverviewPage(getDriver(), getApplicationUrl());
+		OverviewPage overviewPage = overviewPage();
 		overviewPage.assertAt();
 	}
 

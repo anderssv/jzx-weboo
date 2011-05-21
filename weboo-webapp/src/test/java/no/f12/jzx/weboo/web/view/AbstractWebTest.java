@@ -4,6 +4,7 @@ import java.io.File;
 
 import no.f12.jzx.weboo.jetty.WebServer;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
+import no.f12.jzx.weboo.web.view.pages.OverviewPage;
 
 import org.junit.After;
 import org.junit.Before;
@@ -53,5 +54,9 @@ public abstract class AbstractWebTest {
 
 	protected OrganizationRegistrationPage organizationPage() {
 		return new OrganizationRegistrationPage(getDriver(), getApplicationUrl());
+	}
+
+	protected OverviewPage overviewPage() {
+		return new OverviewPage(getDriver(), getApplicationUrl());
 	}
 }
