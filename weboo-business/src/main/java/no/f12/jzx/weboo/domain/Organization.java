@@ -7,6 +7,7 @@ public class Organization {
 	@NotEmpty
 	private String name;
 	private OrganizationNumber organizationNumber;
+	private Long id;
 
 	protected Organization(){
 		
@@ -31,6 +32,14 @@ public class Organization {
 
 	public void setOrganizationNumber(OrganizationNumber number) {
 		this.organizationNumber = number;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return this.id;
 	}
 
 }

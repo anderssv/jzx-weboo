@@ -6,4 +6,6 @@ public interface OrganizationRepository {
 	
 	public void addOrganization(Organization organization);
 
+	public Organization getOrganization(Long id);
+
 }
