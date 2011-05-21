@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value = "/organization")
+@RequestMapping(value = "/" + NavigationRegistry.URL_ORGANIZATION)
 public class OrganizationRegistrationController {
 
 	@Autowired
@@ -21,18 +21,18 @@ public class OrganizationRegistrationController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String showNewInput(@ModelAttribute Organization organization) {
-		return "organization/organizationForm";
+		return NavigationRegistry.VIEW_ORGANIZATION_FORM;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String showOverView(@Valid @ModelAttribute Organization organization, Errors erros) {
-		if (erros.hasErrors()) {
-			return "organization/organizationForm";
+	public String registerNewOrganization(@Valid @ModelAttribute Organization organization, Errors errors) {
+		if (errors.hasErrors()) {
+			return NavigationRegistry.VIEW_ORGANIZATION_FORM;
 		}
 
 		this.orgRepo.addOrganization(organization);
 
-		return "organization/overviewForm";
+		return NavigationRegistry.VIEW_ORGANIZATION_SUMMARY;
 	}
 
 	public void setOrganizationRepository(OrganizationRepository orgRepo) {
