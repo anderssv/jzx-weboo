@@ -21,4 +21,9 @@ public class OrganizationBuilder extends Organization implements Builder<Organiz
 		return this;
 	}
 
+	public OrganizationBuilder withNoOrganizationNumber() {
+		setOrganizationNumber(null);
+		return this;
+	}
+
 }

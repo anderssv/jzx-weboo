@@ -1,11 +1,14 @@
 package no.f12.jzx.weboo.domain;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Organization {
 
 	@NotEmpty
 	private String name;
+	@NotNull
 	private OrganizationNumber organizationNumber;
 	private Long id;
 
