@@ -2,6 +2,8 @@ package no.f12.jzx.weboo.domain;
 
 import javax.validation.constraints.NotNull;
 
+import no.f12.jzx.weboo.domain.validation.ValidOrganizationNumber;
+
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class Organization {
@@ -9,6 +11,7 @@ public class Organization {
 	@NotEmpty
 	private String name;
 	@NotNull
+	@ValidOrganizationNumber
 	private OrganizationNumber organizationNumber;
 	private Long id;
 

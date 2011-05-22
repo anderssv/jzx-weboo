@@ -1,4 +1,7 @@
-package no.f12.jzx.weboo.domain;
+package no.f12.jzx.weboo.domain.validation;
+
+import no.f12.jzx.weboo.domain.OrganizationNumber;
+import no.f12.jzx.weboo.domain.ValueObject;
 
 public class WeightedCrcNumberValidator {
 

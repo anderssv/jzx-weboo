@@ -1,5 +1,7 @@
 package no.f12.jzx.weboo.domain;
 
+import no.f12.jzx.weboo.domain.validation.WeightedCrcNumberValidator;
+
 public class OrganizationNumber implements ValueObject {
 
 	private String value;
