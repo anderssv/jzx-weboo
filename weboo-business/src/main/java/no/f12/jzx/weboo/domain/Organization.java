@@ -10,6 +10,7 @@ public class Organization {
 
 	@NotEmpty
 	private String name;
+
 	@NotNull
 	@ValidOrganizationNumber
 	private OrganizationNumber organizationNumber;
