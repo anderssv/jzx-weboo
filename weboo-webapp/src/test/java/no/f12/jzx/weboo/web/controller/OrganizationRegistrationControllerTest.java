@@ -22,6 +22,7 @@ public class OrganizationRegistrationControllerTest {
 		Organization org = OrganizationDataProvider.createDefaultOrganization().build();
 		String resultingView = controller.registerNewOrganization(org, new DirectFieldBindingResult(org, BeansUtil
 				.beanName(Organization.class)));
+
 		assertEquals(NavigationRegistry.VIEW_ORGANIZATION_SUMMARY, resultingView);
 		verify(orgaRepo).addOrganization(org);
 	}
