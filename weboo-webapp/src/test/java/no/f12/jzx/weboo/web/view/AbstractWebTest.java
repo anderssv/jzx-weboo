@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.support.PageFactory;
 
 public abstract class AbstractWebTest {
 
@@ -54,14 +55,28 @@ public abstract class AbstractWebTest {
 	}
 
 	protected OrganizationRegistrationPage organizationPage() {
-		return new OrganizationRegistrationPage(getDriver(), getApplicationUrl());
+		OrganizationRegistrationPage organizationRegistrationPage = new OrganizationRegistrationPage(getDriver(),
+				getApplicationUrl());
+		initializePage(organizationRegistrationPage);
+
+		return organizationRegistrationPage;
+	}
+
+	private void initializePage(Object page) {
+		PageFactory.initElements(getDriver(), page);
 	}
 
 	protected OverviewPage overviewPage() {
-		return new OverviewPage(getDriver(), getApplicationUrl());
+		OverviewPage overviewPage = new OverviewPage(getDriver(), getApplicationUrl());
+		initializePage(overviewPage);
+
+		return overviewPage;
 	}
 
 	protected InformationRequestPage informationRequestPage() {
-		return new InformationRequestPage(getDriver(), getApplicationUrl());
+		InformationRequestPage informationRequestPage = new InformationRequestPage(getDriver(), getApplicationUrl());
+		initializePage(informationRequestPage);
+		
+		return informationRequestPage;
 	}
 }

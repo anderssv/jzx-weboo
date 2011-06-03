@@ -13,6 +13,7 @@
 		<spring.version>3.0.5.RELEASE</spring.version>
 		<version.jetty>7.2.2.v20101205</version.jetty>
 		<version.glassfish-jsp-2_1>2.1.v20100127</version.glassfish-jsp-2_1>
+		<version.webdriver>0.9.7376</version.webdriver>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -118,7 +119,14 @@
 			<dependency>
 				<groupId>org.seleniumhq.webdriver</groupId>
 				<artifactId>webdriver-htmlunit</artifactId>
-				<version>0.9.7376</version>
+				<version>${version.webdriver}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.webdriver</groupId>
+				<artifactId>webdriver-support</artifactId>
+				<version>${version.webdriver}</version>
+				<scope>test</scope>
 			</dependency>
 
 			<dependency>
