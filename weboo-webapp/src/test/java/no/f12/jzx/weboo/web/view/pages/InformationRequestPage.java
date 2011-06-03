@@ -1,5 +1,7 @@
 package no.f12.jzx.weboo.web.view.pages;
 
+import junit.framework.Assert;
+import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.web.controller.NavigationRegistry;
 
 import org.openqa.selenium.WebDriver;
@@ -17,6 +19,10 @@ public class InformationRequestPage extends AbstractPage {
 
 	public void goTo() {
 		getDriver().get(getApplicationUrl() + NavigationRegistry.URL_INFORMATION_REQUEST);
+	}
+
+	public void fill(InformationRequest request) {
+		Assert.assertTrue(false);
 	}
 
 }

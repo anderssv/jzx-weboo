@@ -21,7 +21,6 @@ public abstract class AbstractPage {
 	}
 
 	public void assertAt() {
-		System.out.println(getDriver().getPageSource());
 		Assert.assertEquals(getTitle(), getDriver().getTitle());
 	}
 
