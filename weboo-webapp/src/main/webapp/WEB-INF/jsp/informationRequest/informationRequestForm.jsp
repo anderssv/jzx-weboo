@@ -9,5 +9,15 @@
 </head>
 <body>
 
+	<form:form modelAttribute="informationRequest">
+		
+		<form:errors id="errors" path="*" />
+		
+		<label>Request title:</label><form:input path="title" />
+		
+		<input type="submit" value="Save" id="save" />
+	</form:form>
+
+
 </body>
 </html>
