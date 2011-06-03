@@ -3,6 +3,7 @@ package no.f12.jzx.weboo.web.view;
 import java.io.File;
 
 import no.f12.jzx.weboo.jetty.WebServer;
+import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 import no.f12.jzx.weboo.web.view.pages.OverviewPage;
 
@@ -58,5 +59,9 @@ public abstract class AbstractWebTest {
 
 	protected OverviewPage overviewPage() {
 		return new OverviewPage(getDriver(), getApplicationUrl());
+	}
+
+	protected InformationRequestPage informationRequestPage() {
+		return new InformationRequestPage(getDriver(), getApplicationUrl());
 	}
 }
