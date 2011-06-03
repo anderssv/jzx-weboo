@@ -7,7 +7,7 @@ import no.f12.jzx.weboo.web.view.pages.OverviewPage;
 
 import org.junit.Test;
 
-public class OrganizationRegistrationPageTest extends AbstractWebTest {
+public class OrganizationRegistrationPageWebTest extends AbstractWebTest {
 
 	@Test
 	public void shouldEnableRegistrationOfOrganization() {

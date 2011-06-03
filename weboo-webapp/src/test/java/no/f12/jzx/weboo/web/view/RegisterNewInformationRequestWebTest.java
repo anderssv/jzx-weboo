@@ -7,7 +7,7 @@ import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 
 import org.junit.Test;
 
-public class RegisterNewInformationRequestTest extends AbstractWebTest {
+public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 	
 	@Test
 	public void shouldRegisterNewRequestWithNewOrganization() {
