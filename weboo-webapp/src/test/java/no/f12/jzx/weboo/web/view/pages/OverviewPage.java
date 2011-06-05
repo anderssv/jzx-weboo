@@ -1,5 +1,9 @@
 package no.f12.jzx.weboo.web.view.pages;
 
+import no.f12.jzx.weboo.domain.InformationRequest;
+
+import static junit.framework.Assert.*;
+
 import org.openqa.selenium.WebDriver;
 
 public class OverviewPage extends AbstractPage {
@@ -10,6 +14,10 @@ public class OverviewPage extends AbstractPage {
 
 	public String getTitle() {
 		return "My Overview";
+	}
+
+	public void assertRequestRegistered(InformationRequest request) {
+		assertTrue(false);
 	}
 
 }
