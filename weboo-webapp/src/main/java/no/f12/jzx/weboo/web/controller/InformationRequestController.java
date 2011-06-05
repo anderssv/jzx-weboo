@@ -1,6 +1,6 @@
 package no.f12.jzx.weboo.web.controller;
 
-import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_FORM;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
@@ -18,4 +18,10 @@ public class InformationRequestController {
 	public String showNewRegistrationForm(@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_INFORMATION_REQUEST_FORM;
 	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public String registerRequestInformation(@ModelAttribute InformationRequest informationRequest) {
+		return "redirect:" + URL_ORGANIZATION;
+	}
+	
 }
