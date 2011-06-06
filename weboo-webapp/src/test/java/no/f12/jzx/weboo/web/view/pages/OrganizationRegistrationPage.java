@@ -5,6 +5,8 @@ import no.f12.jzx.weboo.domain.Organization;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
+
 public class OrganizationRegistrationPage extends AbstractPage {
 
 	private WebElement name;
@@ -29,7 +31,7 @@ public class OrganizationRegistrationPage extends AbstractPage {
 	}
 
 	public void goTo() {
-		getDriver().get(getApplicationUrl() + "organization");
+		getDriver().get(getApplicationUrl() + url(URL_INFORMATION_REQUEST, URL_ORGANIZATION));
 		assertAt();
 	}
 

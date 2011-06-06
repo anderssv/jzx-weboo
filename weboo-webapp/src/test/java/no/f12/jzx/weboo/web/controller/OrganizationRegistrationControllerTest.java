@@ -16,7 +16,7 @@ public class OrganizationRegistrationControllerTest {
 
 	@Test
 	public void shouldAddOrganizationToRepositoryIfNoErrors() {
-		OrganizationRegistrationController controller = new OrganizationRegistrationController();
+		InformationRequestController controller = new InformationRequestController();
 		OrganizationRepository orgaRepo = mock(OrganizationRepository.class);
 		controller.setOrganizationRepository(orgaRepo);
 
