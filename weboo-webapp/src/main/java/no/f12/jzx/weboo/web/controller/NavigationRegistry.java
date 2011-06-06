@@ -11,7 +11,7 @@ public class NavigationRegistry {
 	public static final String VIEW_ORGANIZATION_FORM = VIEW_ORGANIZATION + "/organizationForm";
 
 	public static final String VIEW_INFORMATION_REQUEST = URL_INFORMATION_REQUEST;
-	public static final String VIEW_INFORMATION_REQUEST_SUMMARY = VIEW_INFORMATION_REQUEST + "/overviewForm";
+	public static final String VIEW_INFORMATION_REQUEST_SUMMARY = VIEW_INFORMATION_REQUEST + "/summary";
 	public static final String VIEW_INFORMATION_REQUEST_FORM = VIEW_INFORMATION_REQUEST + "/informationRequestForm";
 
 	public static final String redirectTo(String url) {
