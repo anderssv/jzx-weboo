@@ -7,18 +7,18 @@ import static junit.framework.Assert.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class OverviewPage extends AbstractPage {
+public class InformationRequestSummaryPage extends AbstractPage {
 
 	
 	private WebElement requestTitle;
 	
 	
-	public OverviewPage(WebDriver driver, String applicationUrl) {
+	public InformationRequestSummaryPage(WebDriver driver, String applicationUrl) {
 		super(driver, applicationUrl);
 	}
 
 	public String getTitle() {
-		return "My Overview";
+		return "Summary of request";
 	}
 
 	public void assertRequestRegistered(InformationRequest request) {
