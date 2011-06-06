@@ -4,12 +4,16 @@ import no.f12.jzx.weboo.domain.Organization;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
 
 public class OrganizationRegistrationPage extends AbstractPage {
 
+	@FindBy(how = How.ID, using="organization.name")
 	private WebElement name;
+	@FindBy(how = How.ID, using="organization.organizationNumber")
 	private WebElement organizationNumber;
 	private WebElement save;
 

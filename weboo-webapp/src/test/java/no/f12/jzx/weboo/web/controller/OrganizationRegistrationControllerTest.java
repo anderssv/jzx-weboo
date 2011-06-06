@@ -1,17 +1,19 @@
 package no.f12.jzx.weboo.web.controller;
 
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST_CONFIRMATION;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.redirectTo;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import no.f12.jzx.weboo.domain.Organization;
+import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.repository.OrganizationRepository;
-import no.f12.jzx.weboo.test.OrganizationDataProvider;
+import no.f12.jzx.weboo.test.InformationRequestDataProvider;
 import no.f12.jzx.weboo.testutil.BeansUtil;
 
 import org.junit.Test;
 import org.springframework.validation.DirectFieldBindingResult;
-
-import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
 public class OrganizationRegistrationControllerTest {
 
 	@Test
@@ -20,12 +22,12 @@ public class OrganizationRegistrationControllerTest {
 		OrganizationRepository orgaRepo = mock(OrganizationRepository.class);
 		controller.setOrganizationRepository(orgaRepo);
 
-		Organization org = OrganizationDataProvider.createDefaultOrganization().build();
-		String resultingView = controller.registerNewOrganization(org, new DirectFieldBindingResult(org, BeansUtil
-				.beanName(Organization.class)));
+		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest();
+		String resultingView = controller.registerNewOrganization(request, new DirectFieldBindingResult(request, BeansUtil
+				.beanName(InformationRequest.class)));
 
 		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, URL_INFORMATION_REQUEST_CONFIRMATION)), resultingView);
-		verify(orgaRepo).addOrganization(org);
+		verify(orgaRepo).addOrganization(request.getOrganization());
 	}
 
 }

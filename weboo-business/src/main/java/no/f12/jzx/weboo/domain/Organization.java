@@ -16,7 +16,7 @@ public class Organization {
 	private OrganizationNumber organizationNumber;
 	private Long id;
 
-	protected Organization(){
+	public Organization(){
 		
 	}
 	

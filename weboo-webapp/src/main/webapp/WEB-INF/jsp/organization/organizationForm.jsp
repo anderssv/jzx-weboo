@@ -10,7 +10,7 @@
 <body>
 
 
-	<form:form modelAttribute="organization">
+	<form:form modelAttribute="informationRequest.organization">
 		
 		<form:errors id="errors" path="*" />
 		

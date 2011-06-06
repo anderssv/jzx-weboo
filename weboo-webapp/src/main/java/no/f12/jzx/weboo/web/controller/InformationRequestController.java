@@ -1,12 +1,17 @@
 package no.f12.jzx.weboo.web.controller;
 
-import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST_CONFIRMATION;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_ORGANIZATION;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_FORM;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_SUMMARY;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_ORGANIZATION_FORM;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.redirectTo;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 
 import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
-import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.domain.repository.OrganizationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,17 +44,17 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.GET)
-	public String showOrganizationInput(@ModelAttribute Organization organization) {
+	public String showOrganizationInput(@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_ORGANIZATION_FORM;
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST)
-	public String registerNewOrganization(@Valid @ModelAttribute Organization organization, Errors errors) {
+	public String registerNewOrganization(@Valid @ModelAttribute InformationRequest informationRequest, Errors errors) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
 		}
 
-		this.orgRepo.addOrganization(organization);
+		this.orgRepo.addOrganization(informationRequest.getOrganization());
 
 		return redirectTo(url(URL_INFORMATION_REQUEST, URL_INFORMATION_REQUEST_CONFIRMATION));
 	}
