@@ -34,7 +34,7 @@ public class OrganizationRegistrationController {
 
 		this.orgRepo.addOrganization(organization);
 
-		return VIEW_ORGANIZATION_SUMMARY;
+		return redirectTo(url(URL_INFORMATION_REQUEST, URL_INFORMATION_REQUEST_CONFIRMATION));
 	}
 
 	public void setOrganizationRepository(OrganizationRepository orgRepo) {

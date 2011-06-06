@@ -10,7 +10,7 @@ public class OrganizationRegistrationPage extends AbstractPage {
 	private WebElement name;
 	private WebElement organizationNumber;
 	private WebElement save;
-	
+
 	public OrganizationRegistrationPage(WebDriver driver, String applicationUrl) {
 		super(driver, applicationUrl);
 	}

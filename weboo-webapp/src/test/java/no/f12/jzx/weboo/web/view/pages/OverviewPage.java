@@ -5,9 +5,14 @@ import no.f12.jzx.weboo.domain.InformationRequest;
 import static junit.framework.Assert.*;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class OverviewPage extends AbstractPage {
 
+	
+	private WebElement requestTitle;
+	
+	
 	public OverviewPage(WebDriver driver, String applicationUrl) {
 		super(driver, applicationUrl);
 	}
@@ -17,7 +22,7 @@ public class OverviewPage extends AbstractPage {
 	}
 
 	public void assertRequestRegistered(InformationRequest request) {
-		assertTrue(false);
+		assertEquals(request.getTitle(), requestTitle.getText());
 	}
 
 }

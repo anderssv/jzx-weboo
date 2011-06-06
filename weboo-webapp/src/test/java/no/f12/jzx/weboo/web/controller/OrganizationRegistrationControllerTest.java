@@ -11,6 +11,7 @@ import no.f12.jzx.weboo.testutil.BeansUtil;
 import org.junit.Test;
 import org.springframework.validation.DirectFieldBindingResult;
 
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
 public class OrganizationRegistrationControllerTest {
 
 	@Test
@@ -23,7 +24,7 @@ public class OrganizationRegistrationControllerTest {
 		String resultingView = controller.registerNewOrganization(org, new DirectFieldBindingResult(org, BeansUtil
 				.beanName(Organization.class)));
 
-		assertEquals(NavigationRegistry.VIEW_ORGANIZATION_SUMMARY, resultingView);
+		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, URL_INFORMATION_REQUEST_CONFIRMATION)), resultingView);
 		verify(orgaRepo).addOrganization(org);
 	}
 

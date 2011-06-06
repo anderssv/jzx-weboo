@@ -1,5 +1,6 @@
 package no.f12.jzx.weboo.web.view.pages;
 
+import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 import junit.framework.Assert;
 
@@ -21,7 +22,8 @@ public abstract class AbstractPage {
 	}
 
 	public void assertAt() {
-		Assert.assertEquals(getTitle(), getDriver().getTitle());
+		Assert.assertEquals("Title does not match at url: " + driver.getCurrentUrl(), getTitle(), getDriver()
+				.getTitle());
 	}
 
 	public void assertErrors() {
@@ -33,4 +35,9 @@ public abstract class AbstractPage {
 	}
 
 	protected abstract String getTitle();
+
+	public void assertText(String textToVerify) {
+		assertTrue("Could not find text: " + textToVerify + "\n" + getDriver().getPageSource(), getDriver()
+				.getPageSource().contains(textToVerify));
+	}
 }

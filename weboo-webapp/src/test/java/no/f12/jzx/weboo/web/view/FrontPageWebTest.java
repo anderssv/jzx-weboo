@@ -1,21 +1,16 @@
 package no.f12.jzx.weboo.web.view;
 
-import org.junit.Test;
+import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 
-import static junit.framework.Assert.*;
+import org.junit.Test;
 
 public class FrontPageWebTest extends AbstractWebTest {
 
 	@Test
-	public void shouldDisplayWelcomeMessage() {
-		getDriver().get(getApplicationUrl());
-		assertTrue(getDriver().getPageSource(), getDriver().getPageSource().contains("Hello World!"));
-	}
-
-	@Test
 	public void shouldApplySitemeshDecorator() {
-		getDriver().get(getApplicationUrl());
-		assertTrue(getDriver().getPageSource(), getDriver().getPageSource().contains("Sitemesh decorator"));
+		OrganizationRegistrationPage organizationPage = organizationPage();
+		organizationPage.goTo();
+		organizationPage.assertText("Sitemesh decorator");
 	}
 
 }

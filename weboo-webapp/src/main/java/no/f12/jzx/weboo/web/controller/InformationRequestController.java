@@ -18,10 +18,15 @@ public class InformationRequestController {
 	public String showNewRegistrationForm(@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_INFORMATION_REQUEST_FORM;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public String registerRequestInformation(@ModelAttribute InformationRequest informationRequest) {
-		return "redirect:" + URL_ORGANIZATION;
+		return redirectTo(URL_ORGANIZATION);
 	}
-	
+
+	@RequestMapping(method = RequestMethod.GET, value = URL_INFORMATION_REQUEST_CONFIRMATION)
+	public String showConfirmationMessageForRequest() {
+		return VIEW_INFORMATION_REQUEST_CONFIRMATION;
+	}
+
 }
