@@ -6,6 +6,7 @@ public class InformationRequestDataProvider {
 
 	public static InformationRequest defaultInformationRequest() {
 		InformationRequest request = new InformationRequest();
+		request.setTitle("My request");
 		return request;
 	}
 

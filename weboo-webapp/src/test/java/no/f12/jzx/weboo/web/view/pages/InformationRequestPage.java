@@ -25,7 +25,7 @@ public class InformationRequestPage extends AbstractPage {
 		getDriver().get(getApplicationUrl() + NavigationRegistry.URL_INFORMATION_REQUEST);
 	}
 
-	public void fill(InformationRequest request) {
+	public void fillIn(InformationRequest request) {
 		title.sendKeys(request.getTitle());
 	}
 

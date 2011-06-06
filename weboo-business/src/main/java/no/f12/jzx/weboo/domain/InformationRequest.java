@@ -21,6 +21,10 @@ public class InformationRequest {
 	public void setOrganization(Organization organization) {
 		this.organization = organization;
 	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 
 }

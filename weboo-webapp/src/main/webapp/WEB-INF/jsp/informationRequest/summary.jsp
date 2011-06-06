@@ -9,5 +9,7 @@
 </head>
 <body>
 
+	<span id="requestTitle"><c:out value="${informationRequest.title}"/></span>
+
 </body>
 </html>

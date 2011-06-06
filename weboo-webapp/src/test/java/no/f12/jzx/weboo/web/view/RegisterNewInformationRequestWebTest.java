@@ -24,7 +24,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		requestPage.goTo();
 		requestPage.assertAt();
 		
-		requestPage.fill(request);
+		requestPage.fillIn(request);
 		requestPage.submit();
 		
 		orgPage.assertAt();
@@ -32,7 +32,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		orgPage.submit();
 		
 		overviewPage.assertAt();
-		//overviewPage.assertRequestRegistered(request);
+		overviewPage.assertRequestRegistered(request);
 	}
 
 

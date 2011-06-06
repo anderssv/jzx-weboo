@@ -39,7 +39,7 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = URL_INFORMATION_REQUEST_CONFIRMATION)
-	public String showConfirmationMessageForRequest() {
+	public String showConfirmationMessageForRequest(@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_INFORMATION_REQUEST_SUMMARY;
 	}
 
