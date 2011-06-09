@@ -18,4 +18,9 @@ public class OrganizationNumber implements ValueObject {
 		return WeightedCrcNumberValidator.isValid(this);
 	}
 
+	@Override
+	public String toString() {
+		return this.value;
+	}
+
 }

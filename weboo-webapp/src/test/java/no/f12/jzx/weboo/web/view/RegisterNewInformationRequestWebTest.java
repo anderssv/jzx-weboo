@@ -14,6 +14,11 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 	public void shouldRegisterNewRequestWithNewOrganization() {
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
 
+		InformationRequestSummaryPage overviewPage = registerRequest(request);
+		overviewPage.assertRequestRegistered(request);
+	}
+
+	private InformationRequestSummaryPage registerRequest(InformationRequest request) {
 		InformationRequestPage requestPage = informationRequestPage();
 		OrganizationRegistrationPage orgPage = organizationPage();
 		InformationRequestSummaryPage overviewPage = overviewPage();
@@ -29,7 +34,18 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		orgPage.submit();
 		
 		overviewPage.assertAt();
-		overviewPage.assertRequestRegistered(request);
+		return overviewPage;
+	}
+
+	
+	@Test
+	public void shouldListAllRequestsSortedOnDate() {
+		InformationRequest request1 = InformationRequestDataProvider.defaultInformationRequest().title("Request1").build();
+		InformationRequest request2 = InformationRequestDataProvider.defaultInformationRequest().title("Request2").build();
+		
+		registerRequest(request1);
+		registerRequest(request2);
+		
 	}
 	
 }
