@@ -12,7 +12,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 	
 	@Test
 	public void shouldRegisterNewRequestWithNewOrganization() {
-		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest();
+		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
 
 		InformationRequestPage requestPage = informationRequestPage();
 		OrganizationRegistrationPage orgPage = organizationPage();

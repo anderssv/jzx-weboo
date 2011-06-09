@@ -1,15 +1,12 @@
 package no.f12.jzx.weboo.test;
 
-import no.f12.jzx.weboo.domain.InformationRequest;
+import no.f12.jzx.weboo.domain.InformationRequestBuilder;
 
 public class InformationRequestDataProvider {
 
-	public static InformationRequest defaultInformationRequest() {
-		InformationRequest request = new InformationRequest();
-		request.setTitle("My request");
-		request.setOrganization(OrganizationDataProvider.createDefaultOrganization().build());
-		return request;
+	public static InformationRequestBuilder defaultInformationRequest() {
+		return InformationRequestBuilder.with().title("My request")
+				.organization(OrganizationDataProvider.createDefaultOrganization());
 	}
 
-	
 }

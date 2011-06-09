@@ -6,11 +6,11 @@ import no.f12.jzx.weboo.domain.OrganizationNumber;
 public class OrganizationDataProvider {
 
 	public static OrganizationBuilder createDefaultOrganization() {
-		return new OrganizationBuilder().withOrganizationNumber(createDefaultOrganizationNumber()).withName("My Org");
+		return OrganizationBuilder.with().organizationNumber(createDefaultOrganizationNumber()).withName("My Org");
 	}
 
 	public static OrganizationBuilder createOrganzationWithInvalidOrganizationNumber() {
-		return createDefaultOrganization().withOrganizationNumber(createInvalidOrganizationNumber());
+		return createDefaultOrganization().organizationNumber(createInvalidOrganizationNumber());
 	}
 
 	public static OrganizationNumber createInvalidOrganizationNumber() {

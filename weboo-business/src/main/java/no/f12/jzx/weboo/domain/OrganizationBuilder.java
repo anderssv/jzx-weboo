@@ -1,29 +1,35 @@
 package no.f12.jzx.weboo.domain;
 
-public class OrganizationBuilder extends Organization implements Builder<Organization> {
+public class OrganizationBuilder implements Builder<Organization> {
 
-	public OrganizationBuilder() {
+	private Organization org = new Organization();
+	
+	private OrganizationBuilder() {
 		super();
 	}
 
 	@Override
 	public Organization build() {
-		return new Organization(getOrganizationNumber(), getName());
+		return org;
 	}
 
-	public OrganizationBuilder withOrganizationNumber(OrganizationNumber organizationNumber) {
-		setOrganizationNumber(organizationNumber);
+	public OrganizationBuilder organizationNumber(OrganizationNumber organizationNumber) {
+		org.setOrganizationNumber(organizationNumber);
 		return this;
 	}
 
 	public OrganizationBuilder withName(String name) {
-		setName(name);
+		org.setName(name);
 		return this;
 	}
 
 	public OrganizationBuilder withNoOrganizationNumber() {
-		setOrganizationNumber(null);
+		org.setOrganizationNumber(null);
 		return this;
+	}
+	
+	public static OrganizationBuilder with() {
+		return new OrganizationBuilder();
 	}
 
 }

@@ -11,7 +11,7 @@ public class OrganizationRepositoryTest {
 	@Test
 	public void shouldAssignIdentifierToOrganization() {
 		OrganizationRepository orgRepo = new OrganizationRepositoryImpl();
-		Organization org = OrganizationDataProvider.createDefaultOrganization();
+		Organization org = OrganizationDataProvider.createDefaultOrganization().build();
 
 		orgRepo.addOrganization(org);
 

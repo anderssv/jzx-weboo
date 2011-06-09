@@ -22,7 +22,7 @@ public class OrganizationRegistrationControllerTest {
 		OrganizationRepository orgaRepo = mock(OrganizationRepository.class);
 		controller.setOrganizationRepository(orgaRepo);
 
-		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest();
+		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
 		String resultingView = controller.registerNewOrganization(request, new DirectFieldBindingResult(request, BeansUtil
 				.beanName(InformationRequest.class)));
 
