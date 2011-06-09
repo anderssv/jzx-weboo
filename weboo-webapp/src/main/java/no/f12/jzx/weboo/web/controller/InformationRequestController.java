@@ -20,14 +20,21 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping(value = "/" + URL_INFORMATION_REQUEST)
+@SessionAttributes(types = InformationRequest.class)
 public class InformationRequestController {
 
 	@Autowired
 	OrganizationRepository orgRepo;
 
+	@ModelAttribute
+	public InformationRequest newInformationRequest() {
+		return new InformationRequest();
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public String showNewRegistrationForm(@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_INFORMATION_REQUEST_FORM;
