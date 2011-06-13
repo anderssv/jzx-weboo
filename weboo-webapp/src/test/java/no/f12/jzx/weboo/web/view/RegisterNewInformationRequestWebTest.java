@@ -4,6 +4,7 @@ import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
+import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 
 import org.junit.Test;
@@ -46,6 +47,9 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		registerRequest(request1);
 		registerRequest(request2);
 		
+		ListRequestsPage listPage = listRequestsPage();
+//		listPage.goTo();
+//		listPage.assertShows(request1);
 	}
 	
 }

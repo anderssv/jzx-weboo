@@ -2,6 +2,8 @@ package no.f12.jzx.weboo.web.controller;
 
 public class NavigationRegistry {
 
+	public static final String URL_NEW = "new";
+	
 	public static final String URL_INFORMATION_REQUEST = "informationRequest";
 	public static final String URL_INFORMATION_REQUEST_CONFIRMATION = "confirmation";
 

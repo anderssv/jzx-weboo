@@ -1,6 +1,6 @@
 package no.f12.jzx.weboo.web.controller;
 
-import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST_CONFIRMATION;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_ORGANIZATION;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_FORM;
@@ -34,8 +34,8 @@ public class InformationRequestController {
 	public InformationRequest newInformationRequest() {
 		return new InformationRequest();
 	}
-	
-	@RequestMapping(method = RequestMethod.GET)
+
+	@RequestMapping(method = RequestMethod.GET, value = URL_NEW)
 	public String showNewRegistrationForm(@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_INFORMATION_REQUEST_FORM;
 	}

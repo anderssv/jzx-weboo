@@ -3,7 +3,9 @@ package no.f12.jzx.weboo.web.view;
 import java.io.File;
 
 import no.f12.jzx.weboo.jetty.WebServer;
+import no.f12.jzx.weboo.web.view.pages.AbstractPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
+import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 
@@ -57,26 +59,27 @@ public abstract class AbstractWebTest {
 	protected OrganizationRegistrationPage organizationPage() {
 		OrganizationRegistrationPage organizationRegistrationPage = new OrganizationRegistrationPage(getDriver(),
 				getApplicationUrl());
-		initializePage(organizationRegistrationPage);
-
-		return organizationRegistrationPage;
-	}
-
-	private void initializePage(Object page) {
-		PageFactory.initElements(getDriver(), page);
+		return initializePage(organizationRegistrationPage);
 	}
 
 	protected InformationRequestSummaryPage overviewPage() {
 		InformationRequestSummaryPage overviewPage = new InformationRequestSummaryPage(getDriver(), getApplicationUrl());
-		initializePage(overviewPage);
-
-		return overviewPage;
+		return initializePage(overviewPage);
 	}
 
 	protected InformationRequestPage informationRequestPage() {
 		InformationRequestPage informationRequestPage = new InformationRequestPage(getDriver(), getApplicationUrl());
-		initializePage(informationRequestPage);
-		
-		return informationRequestPage;
+		return initializePage(informationRequestPage);
+	}
+
+	protected ListRequestsPage listRequestsPage() {
+		ListRequestsPage listRequestsPage = new ListRequestsPage(getDriver(), getApplicationUrl());
+		return initializePage(listRequestsPage);
+	}
+
+	private <T extends AbstractPage> T initializePage(T page) {
+		PageFactory.initElements(getDriver(), page);
+
+		return page;
 	}
 }
