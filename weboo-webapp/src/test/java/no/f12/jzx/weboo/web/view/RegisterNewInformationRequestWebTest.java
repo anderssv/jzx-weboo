@@ -48,8 +48,9 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		registerRequest(request2);
 		
 		ListRequestsPage listPage = listRequestsPage();
-//		listPage.goTo();
-//		listPage.assertShows(request1);
+		listPage.goTo();
+		listPage.assertShows(request1);
+		listPage.assertShows(request2);
 	}
 	
 }

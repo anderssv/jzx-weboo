@@ -1,7 +1,8 @@
 package no.f12.jzx.weboo.web.controller;
 
-import static no.f12.jzx.weboo.web.controller.NavigationRegistry.*;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST_CONFIRMATION;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_NEW;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_ORGANIZATION;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_FORM;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_SUMMARY;
