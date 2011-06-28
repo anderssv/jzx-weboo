@@ -4,9 +4,9 @@ import javax.validation.Valid;
 
 public class InformationRequest {
 
-	
+	private Long id;
 	private String title;
-	
+
 	@Valid
 	private Organization organization;
 
@@ -17,7 +17,7 @@ public class InformationRequest {
 	public Organization getOrganization() {
 		return this.organization;
 	}
-	
+
 	public void setOrganization(Organization organization) {
 		this.organization = organization;
 	}
@@ -25,6 +25,13 @@ public class InformationRequest {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
+	public Long getId() {
+		return this.id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }

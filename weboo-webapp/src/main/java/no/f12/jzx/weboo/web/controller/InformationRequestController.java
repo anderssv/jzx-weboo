@@ -48,7 +48,12 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String registerRequestInformation(@ModelAttribute InformationRequest informationRequest) {
+	public String registerRequestInformation(@ModelAttribute InformationRequest informationRequest, Errors errors) {
+		if (errors.hasErrors()) {
+			return VIEW_INFORMATION_REQUEST_FORM;
+		}
+		
+		this.orgRepo.addInformationRequest(informationRequest);
 		return redirectTo(url(URL_INFORMATION_REQUEST, URL_ORGANIZATION));
 	}
 
