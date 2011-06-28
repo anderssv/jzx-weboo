@@ -1,6 +1,6 @@
 package no.f12.jzx.weboo.web.view.pages;
 
-import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.*;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 import no.f12.jzx.weboo.domain.InformationRequest;
@@ -23,6 +23,7 @@ public class ListRequestsPage extends AbstractPage {
 
 	public void assertShows(InformationRequest request1) {
 		assertNotNull(requestListing);
+		assertTrue(requestListing.isEnabled());
 	}
 
 	public void goTo() {

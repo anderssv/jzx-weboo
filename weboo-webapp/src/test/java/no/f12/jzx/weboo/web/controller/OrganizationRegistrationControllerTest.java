@@ -1,7 +1,7 @@
 package no.f12.jzx.weboo.web.controller;
 
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
-import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST_CONFIRMATION;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_CONFIRMATION;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.redirectTo;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 import static org.junit.Assert.assertEquals;
@@ -26,7 +26,7 @@ public class OrganizationRegistrationControllerTest {
 		String resultingView = controller.registerNewOrganization(request, new DirectFieldBindingResult(request, BeansUtil
 				.beanName(InformationRequest.class)));
 
-		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, URL_INFORMATION_REQUEST_CONFIRMATION)), resultingView);
+		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, URL_CONFIRMATION)), resultingView);
 		verify(orgaRepo).addOrganization(request.getOrganization());
 	}
 

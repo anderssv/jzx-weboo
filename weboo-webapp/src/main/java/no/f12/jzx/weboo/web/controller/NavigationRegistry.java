@@ -3,9 +3,9 @@ package no.f12.jzx.weboo.web.controller;
 public class NavigationRegistry {
 
 	public static final String URL_NEW = "new";
-	
+	public static final String URL_CONFIRMATION = "confirmation";
+
 	public static final String URL_INFORMATION_REQUEST = "informationRequest";
-	public static final String URL_INFORMATION_REQUEST_CONFIRMATION = "confirmation";
 
 	public static final String URL_ORGANIZATION = "organization";
 
@@ -13,6 +13,7 @@ public class NavigationRegistry {
 	public static final String VIEW_ORGANIZATION_FORM = VIEW_ORGANIZATION + "/organizationForm";
 
 	public static final String VIEW_INFORMATION_REQUEST = URL_INFORMATION_REQUEST;
+	public static final String VIEW_INFORMATION_REQUEST_LIST = VIEW_INFORMATION_REQUEST + "/listing";
 	public static final String VIEW_INFORMATION_REQUEST_SUMMARY = VIEW_INFORMATION_REQUEST + "/summary";
 	public static final String VIEW_INFORMATION_REQUEST_FORM = VIEW_INFORMATION_REQUEST + "/informationRequestForm";
 
