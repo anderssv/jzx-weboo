@@ -9,7 +9,7 @@ import no.f12.jzx.weboo.domain.Organization;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class OrganizationRepositoryImpl implements OrganizationRepository {
+public class InformationRequestRepositoryImpl implements InformationRequestRepository {
 
 	private Map<Long, Organization> organizations = new HashMap<Long, Organization>();
 	private Long latestOrganizationId = 0L;

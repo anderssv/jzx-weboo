@@ -10,7 +10,7 @@ public class OrganizationRepositoryTest {
 
 	@Test
 	public void shouldAssignIdentifierToOrganization() {
-		OrganizationRepository orgRepo = new OrganizationRepositoryImpl();
+		InformationRequestRepository orgRepo = new InformationRequestRepositoryImpl();
 		Organization org = OrganizationDataProvider.createDefaultOrganization().build();
 
 		orgRepo.addOrganization(org);

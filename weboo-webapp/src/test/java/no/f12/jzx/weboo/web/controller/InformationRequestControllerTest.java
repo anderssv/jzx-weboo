@@ -8,8 +8,8 @@ import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import no.f12.jzx.weboo.domain.InformationRequest;
-import no.f12.jzx.weboo.domain.repository.OrganizationRepository;
-import no.f12.jzx.weboo.domain.repository.OrganizationRepositoryImpl;
+import no.f12.jzx.weboo.domain.repository.InformationRequestRepository;
+import no.f12.jzx.weboo.domain.repository.InformationRequestRepositoryImpl;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
 import no.f12.jzx.weboo.testutil.BeansUtil;
 
@@ -21,7 +21,7 @@ public class InformationRequestControllerTest {
 	@Test
 	public void shouldAddOrganizationToRepositoryIfNoErrors() {
 		InformationRequestController controller = new InformationRequestController();
-		OrganizationRepository orgRepo = new OrganizationRepositoryImpl();
+		InformationRequestRepository orgRepo = new InformationRequestRepositoryImpl();
 		controller.setOrganizationRepository(orgRepo);
 
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
@@ -35,7 +35,7 @@ public class InformationRequestControllerTest {
 	@Test
 	public void shouldAddRequestToRepositoryIfNoErrors() {
 		InformationRequestController controller = new InformationRequestController();
-		OrganizationRepository orgRepo = new OrganizationRepositoryImpl();
+		InformationRequestRepository orgRepo = new InformationRequestRepositoryImpl();
 		controller.setOrganizationRepository(orgRepo);
 
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();

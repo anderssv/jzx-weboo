@@ -14,7 +14,7 @@ import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
-import no.f12.jzx.weboo.domain.repository.OrganizationRepository;
+import no.f12.jzx.weboo.domain.repository.InformationRequestRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class InformationRequestController {
 
 	@Autowired
-	OrganizationRepository orgRepo;
+	InformationRequestRepository orgRepo;
 
 	@ModelAttribute
 	public InformationRequest newInformationRequest() {
@@ -78,7 +78,7 @@ public class InformationRequestController {
 		return redirectTo(url(URL_INFORMATION_REQUEST, URL_CONFIRMATION));
 	}
 
-	public void setOrganizationRepository(OrganizationRepository orgRepo) {
+	public void setOrganizationRepository(InformationRequestRepository orgRepo) {
 		this.orgRepo = orgRepo;
 	}
 
