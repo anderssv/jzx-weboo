@@ -1,6 +1,7 @@
 package no.f12.jzx.weboo.domain.repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
@@ -8,12 +9,14 @@ import no.f12.jzx.weboo.domain.Organization;
 
 import org.springframework.stereotype.Repository;
 
+import com.google.common.collect.Lists;
+
 @Repository
 public class InformationRequestRepositoryImpl implements InformationRequestRepository {
 
 	private Map<Long, Organization> organizations = new HashMap<Long, Organization>();
 	private Long latestOrganizationId = 0L;
-	
+
 	private Map<Long, InformationRequest> requests = new HashMap<Long, InformationRequest>();
 	private Long latestRequestId = 0L;
 
@@ -35,8 +38,15 @@ public class InformationRequestRepositoryImpl implements InformationRequestRepos
 
 	@Override
 	public void addInformationRequest(InformationRequest informationRequest) {
-		informationRequest.setId(latestRequestId++);
-		requests.put(informationRequest.getId(), informationRequest);
+		if (!this.requests.containsKey(informationRequest.getId())) {
+			informationRequest.setId(latestRequestId++);
+			requests.put(informationRequest.getId(), informationRequest);
+		}
+	}
+
+	@Override
+	public List<InformationRequest> getRequests() {
+		return Lists.newArrayList(this.requests.values());
 	}
 
 }

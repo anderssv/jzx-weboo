@@ -15,11 +15,13 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 	public void shouldRegisterNewRequestWithNewOrganization() {
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
 
-		InformationRequestSummaryPage overviewPage = registerRequest(request);
+		registerRequest(request);
+
+		InformationRequestSummaryPage overviewPage = overviewPage();
 		overviewPage.assertRequestRegistered(request);
 	}
 
-	private InformationRequestSummaryPage registerRequest(InformationRequest request) {
+	private Long registerRequest(InformationRequest request) {
 		InformationRequestPage requestPage = informationRequestPage();
 		OrganizationRegistrationPage orgPage = organizationPage();
 		InformationRequestSummaryPage overviewPage = overviewPage();
@@ -35,7 +37,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		orgPage.submit();
 		
 		overviewPage.assertAt();
-		return overviewPage;
+		return overviewPage.getRegisteredRequestIdentifier();
 	}
 
 	
@@ -44,9 +46,12 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		InformationRequest request1 = InformationRequestDataProvider.defaultInformationRequest().title("Request1").build();
 		InformationRequest request2 = InformationRequestDataProvider.defaultInformationRequest().title("Request2").build();
 		
-		registerRequest(request1);
-		registerRequest(request2);
+		Long requestId1 = registerRequest(request1);
+		Long requestId2 = registerRequest(request2);
 		
+		request1.setId(requestId1);
+		request2.setId(requestId2);
+
 		ListRequestsPage listPage = listRequestsPage();
 		listPage.goTo();
 		listPage.assertShows(request1);

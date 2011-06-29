@@ -11,6 +11,7 @@ public class InformationRequestSummaryPage extends AbstractPage {
 
 	
 	private WebElement requestTitle;
+	private WebElement requestId;
 	
 	
 	public InformationRequestSummaryPage(WebDriver driver, String applicationUrl) {
@@ -23,6 +24,10 @@ public class InformationRequestSummaryPage extends AbstractPage {
 
 	public void assertRequestRegistered(InformationRequest request) {
 		assertEquals(request.getTitle(), requestTitle.getText());
+	}
+
+	public Long getRegisteredRequestIdentifier() {
+		return Long.valueOf(requestId.getText());
 	}
 
 }

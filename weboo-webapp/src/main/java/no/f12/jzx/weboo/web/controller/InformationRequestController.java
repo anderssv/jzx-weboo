@@ -11,6 +11,8 @@ import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_ORGANIZATI
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.redirectTo;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
@@ -18,11 +20,13 @@ import no.f12.jzx.weboo.domain.repository.InformationRequestRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping(value = "/" + URL_INFORMATION_REQUEST)
@@ -38,10 +42,13 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String listRegistrations() {
+	public String listRequests(Model model) {
+		List<InformationRequest> requests = this.orgRepo.getRequests();
+		model.addAttribute("requests", requests);
+
 		return VIEW_INFORMATION_REQUEST_LIST;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = URL_NEW)
 	public String showNewRegistrationForm(@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_INFORMATION_REQUEST_FORM;
@@ -52,13 +59,14 @@ public class InformationRequestController {
 		if (errors.hasErrors()) {
 			return VIEW_INFORMATION_REQUEST_FORM;
 		}
-		
+
 		this.orgRepo.addInformationRequest(informationRequest);
 		return redirectTo(url(URL_INFORMATION_REQUEST, URL_ORGANIZATION));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = URL_CONFIRMATION)
-	public String showConfirmationMessageForRequest(@ModelAttribute InformationRequest informationRequest) {
+	public String showConfirmationMessageForRequest(@ModelAttribute InformationRequest informationRequest, SessionStatus sessionStatus) {
+		sessionStatus.setComplete();
 		return VIEW_INFORMATION_REQUEST_SUMMARY;
 	}
 

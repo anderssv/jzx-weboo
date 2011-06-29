@@ -9,6 +9,14 @@
 </head>
 <body>
 
+	<div id="requestListing">
+		<c:forEach items="${requests}" var="informationRequest">
+			<div class="informationRequest">
+				<span class="requestNumber">${informationRequest.id}</span>
+				<span class="requestTitle">${informationRequest.title}</span>
+			</div>
+		</c:forEach>
+	</div>
 
 </body>
 </html>

@@ -9,7 +9,8 @@
 </head>
 <body>
 
-	<span id="requestTitle"><c:out value="${informationRequest.title}"/></span>
+	<span id="requestTitle">${informationRequest.title}</span>
+	<span id="requestId">${informationRequest.id}</span>
 
 </body>
 </html>

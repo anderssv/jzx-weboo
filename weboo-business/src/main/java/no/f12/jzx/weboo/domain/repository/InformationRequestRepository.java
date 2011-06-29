@@ -1,5 +1,7 @@
 package no.f12.jzx.weboo.domain.repository;
 
+import java.util.List;
+
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.Organization;
 
@@ -12,5 +14,7 @@ public interface InformationRequestRepository {
 	public InformationRequest getInformationRequest(Long id);
 
 	public void addInformationRequest(InformationRequest informationRequest);
+
+	public List<InformationRequest> getRequests();
 
 }
