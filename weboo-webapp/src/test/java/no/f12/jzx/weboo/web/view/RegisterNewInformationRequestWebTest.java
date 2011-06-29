@@ -43,8 +43,8 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 	
 	@Test
 	public void shouldListAllRequestsSortedOnDate() {
-		InformationRequest request1 = InformationRequestDataProvider.defaultInformationRequest().title("Request1").build();
-		InformationRequest request2 = InformationRequestDataProvider.defaultInformationRequest().title("Request2").build();
+		InformationRequest request1 = InformationRequestDataProvider.defaultInformationRequest().title("Request2").build();
+		InformationRequest request2 = InformationRequestDataProvider.defaultInformationRequest().title("Request1").build();
 		
 		Long requestId1 = registerRequest(request1);
 		Long requestId2 = registerRequest(request2);
@@ -56,6 +56,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		listPage.goTo();
 		listPage.assertShows(request1);
 		listPage.assertShows(request2);
+		listPage.assertAlphabeticalSorting();
 	}
 	
 }

@@ -1,5 +1,8 @@
 package no.f12.jzx.weboo.domain.repository;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +49,14 @@ public class InformationRequestRepositoryImpl implements InformationRequestRepos
 
 	@Override
 	public List<InformationRequest> getRequests() {
-		return Lists.newArrayList(this.requests.values());
+		ArrayList<InformationRequest> sortedRequests = Lists.newArrayList(this.requests.values());
+		Collections.sort(sortedRequests, new Comparator<InformationRequest>() {
+			@Override
+			public int compare(InformationRequest o1, InformationRequest o2) {
+				return o1.getTitle().compareTo(o2.getTitle());
+			}
+		});
+		return sortedRequests;
 	}
 
 }
