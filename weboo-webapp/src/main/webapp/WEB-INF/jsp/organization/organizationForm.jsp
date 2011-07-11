@@ -16,8 +16,8 @@
 		
 		<label>Organization name:</label><form:input path="name" />
 		<label>Organization number:</label><form:input path="organizationNumber" />
-		
-		<input type="submit" value="Save" id="save" />
+		<input type="submit" value="Lookup" name="lookup" id="lookup"/>
+		<input type="submit" value="Save" name="save" id="save" />
 	</form:form>
 
 </body>

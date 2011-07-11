@@ -14,5 +14,4 @@
 <body>
 	<!-- Sitemesh decorator -->
  	<decorator:body />
-</body>
-</html>	
+</body> 

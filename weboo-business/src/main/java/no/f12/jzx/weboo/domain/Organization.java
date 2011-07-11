@@ -19,7 +19,7 @@ public class Organization {
 	public Organization(){
 		
 	}
-	
+
 	public Organization(OrganizationNumber organizationNumber, String organizationName) {
 		this.organizationNumber = organizationNumber;
 		this.name = organizationName;
@@ -47,6 +47,31 @@ public class Organization {
 
 	public Long getId() {
 		return this.id;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((organizationNumber == null) ? 0 : organizationNumber.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Organization other = (Organization) obj;
+		if (organizationNumber == null) {
+			if (other.organizationNumber != null)
+				return false;
+		} else if (!organizationNumber.equals(other.organizationNumber))
+			return false;
+		return true;
 	}
 
 }

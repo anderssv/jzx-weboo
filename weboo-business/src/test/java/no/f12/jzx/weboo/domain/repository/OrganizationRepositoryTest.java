@@ -19,4 +19,15 @@ public class OrganizationRepositoryTest {
 		assertNotNull(orgRepo.getOrganization(org.getId()));
 	}
 
+	@Test
+	public void shouldFindOrganizationByOrganizationNumberIfExists() throws Exception {
+		InformationRequestRepository orgRepo = new InformationRequestRepositoryImpl();
+		Organization org = OrganizationDataProvider.createDefaultOrganization().build();
+
+		orgRepo.addOrganization(org);
+		Organization orgFromRepo = orgRepo.findOrganization(org.getOrganizationNumber());
+		assertEquals(org, orgFromRepo);
+		
+
+	}
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.Organization;
+import no.f12.jzx.weboo.domain.OrganizationNumber;
 
 import org.springframework.stereotype.Repository;
 
@@ -57,6 +58,15 @@ public class InformationRequestRepositoryImpl implements InformationRequestRepos
 			}
 		});
 		return sortedRequests;
+	}
+
+	@Override
+	public Organization findOrganization(OrganizationNumber organizationNumber) {
+		for (Organization organization : organizations.values()) {
+			if (organization.getOrganizationNumber().equals(organizationNumber))
+				return organization;
+		}
+		return null;
 	}
 
 }

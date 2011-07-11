@@ -9,6 +9,9 @@ import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -20,11 +23,16 @@ public abstract class AbstractWebTest {
 
 	protected static final String APPCONTEXT = "myapp";
 	private static final String WEBAPP_PATH = "src/main/webapp";
-
+	
+	private static Logger LOGGER;
+	
 	private static volatile WebServer server;
 
 	private WebDriver driver;
 
+	public AbstractWebTest(){
+		LOGGER = Logger.getLogger(getClass());
+	}
 	@BeforeClass
 	public static void createServer() throws Exception {
 		// Needs to be set so we have defaults for the tests
@@ -49,7 +57,10 @@ public abstract class AbstractWebTest {
 	}
 
 	protected String getApplicationUrl() {
-		return "http://localhost:" + server.getPort() + "/" + APPCONTEXT + "/";
+		String applicationUrl = "http://localhost:" + server.getPort() + "/" + APPCONTEXT + "/";
+		LOGGER.log(Level.INFO, "ApplicationUrl: " + applicationUrl);
+		return applicationUrl;
+
 	}
 
 	protected WebDriver getDriver() {

@@ -1,7 +1,9 @@
 package no.f12.jzx.weboo.web.view.pages;
 
 import no.f12.jzx.weboo.domain.Organization;
+import no.f12.jzx.weboo.domain.OrganizationNumber;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +18,7 @@ public class OrganizationRegistrationPage extends AbstractPage {
 	@FindBy(how = How.ID, using="organization.organizationNumber")
 	private WebElement organizationNumber;
 	private WebElement save;
+	private WebElement lookup;
 
 	public OrganizationRegistrationPage(WebDriver driver, String applicationUrl) {
 		super(driver, applicationUrl);
@@ -37,6 +40,22 @@ public class OrganizationRegistrationPage extends AbstractPage {
 	public void goTo() {
 		getDriver().get(getApplicationUrl() + url(URL_INFORMATION_REQUEST, URL_ORGANIZATION));
 		assertAt();
+	}
+
+	public void fillIn(OrganizationNumber organizationNumber) {
+		this.organizationNumber.sendKeys(organizationNumber.getValue());
+		
+		
+	}
+
+	public void clickLookup() {
+		lookup.click();
+		
+	}
+
+	public void assertOrganisationName(String name) {
+		Assert.assertEquals(name, this.name.getValue());
+		
 	}
 
 }

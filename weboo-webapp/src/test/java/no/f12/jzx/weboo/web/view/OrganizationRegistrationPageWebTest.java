@@ -22,7 +22,7 @@ public class OrganizationRegistrationPageWebTest extends AbstractWebTest {
 		InformationRequestSummaryPage overviewPage = overviewPage();
 		overviewPage.assertAt();
 	}
-
+	
 	@Test
 	public void shouldDisplayErrorMessagesWhenValidationFails() {
 		Organization org = OrganizationDataProvider.createDefaultOrganization().withName("").build();

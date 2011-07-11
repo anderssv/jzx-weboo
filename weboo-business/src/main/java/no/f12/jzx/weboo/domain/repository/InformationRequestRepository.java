@@ -4,6 +4,7 @@ import java.util.List;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.Organization;
+import no.f12.jzx.weboo.domain.OrganizationNumber;
 
 public interface InformationRequestRepository {
 	
@@ -16,5 +17,7 @@ public interface InformationRequestRepository {
 	public void addInformationRequest(InformationRequest informationRequest);
 
 	public List<InformationRequest> getRequests();
+
+	public Organization findOrganization(OrganizationNumber organizationNumber);
 
 }

@@ -1,7 +1,9 @@
 package no.f12.jzx.weboo.web.view;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
+import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
+import no.f12.jzx.weboo.test.OrganizationDataProvider;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
@@ -19,6 +21,28 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 
 		InformationRequestSummaryPage overviewPage = overviewPage();
 		overviewPage.assertRequestRegistered(request);
+	}
+	
+	@Test
+	public void shouldLookupExistingOrganisation() throws Exception {
+		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
+		registerRequest(request);
+		InformationRequestSummaryPage overviewPage = overviewPage();
+		overviewPage.assertRequestRegistered(request);
+		
+		InformationRequest request2 = InformationRequestDataProvider.defaultInformationRequest().build();
+		InformationRequestPage requestPage = informationRequestPage();
+		requestPage.goTo();
+		requestPage.assertAt();
+		requestPage.fillIn(request2);
+		requestPage.submit();
+		
+		OrganizationRegistrationPage orgPage = organizationPage();
+		orgPage.assertAt();
+		orgPage.fillIn(request2.getOrganization().getOrganizationNumber());
+		orgPage.clickLookup();
+		orgPage.assertOrganisationName(request.getOrganization().getName());
+		
 	}
 
 	private Long registerRequest(InformationRequest request) {

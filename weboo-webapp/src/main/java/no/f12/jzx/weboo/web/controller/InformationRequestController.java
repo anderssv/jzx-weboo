@@ -16,6 +16,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
+import no.f12.jzx.weboo.domain.Organization;
+import no.f12.jzx.weboo.domain.OrganizationNumber;
 import no.f12.jzx.weboo.domain.repository.InformationRequestRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +67,8 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = URL_CONFIRMATION)
-	public String showConfirmationMessageForRequest(@ModelAttribute InformationRequest informationRequest, SessionStatus sessionStatus) {
+	public String showConfirmationMessageForRequest(@ModelAttribute InformationRequest informationRequest,
+			SessionStatus sessionStatus) {
 		sessionStatus.setComplete();
 		return VIEW_INFORMATION_REQUEST_SUMMARY;
 	}
@@ -75,7 +78,7 @@ public class InformationRequestController {
 		return VIEW_ORGANIZATION_FORM;
 	}
 
-	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST)
+	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params = "save")
 	public String registerNewOrganization(@Valid @ModelAttribute InformationRequest informationRequest, Errors errors) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
@@ -84,6 +87,16 @@ public class InformationRequestController {
 		this.orgRepo.addOrganization(informationRequest.getOrganization());
 
 		return redirectTo(url(URL_INFORMATION_REQUEST, URL_CONFIRMATION));
+	}
+
+	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params="lookup")
+	public String lookupOrganisationName(@ModelAttribute InformationRequest informationRequest, Errors errors) {
+		if (errors.hasErrors()) {
+			return VIEW_ORGANIZATION_FORM;
+		}
+		Organization org = this.orgRepo.findOrganization(informationRequest.getOrganization().getOrganizationNumber());
+		informationRequest.setOrganization(org);
+		return VIEW_ORGANIZATION_FORM;
 	}
 
 	public void setOrganizationRepository(InformationRequestRepository orgRepo) {
