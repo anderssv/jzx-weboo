@@ -95,7 +95,10 @@ public class InformationRequestController {
 			return VIEW_ORGANIZATION_FORM;
 		}
 		Organization org = this.orgRepo.findOrganization(informationRequest.getOrganization().getOrganizationNumber());
-		informationRequest.setOrganization(org);
+		if (org != null){
+			informationRequest.setOrganization(org);
+		}
+		
 		return VIEW_ORGANIZATION_FORM;
 	}
 

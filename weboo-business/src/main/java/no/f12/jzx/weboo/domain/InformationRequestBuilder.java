@@ -31,4 +31,13 @@ public class InformationRequestBuilder implements Builder<InformationRequest> {
 		return this;
 	}
 
+	public OrganizationBuilder getOrganization() {
+		return this.orgBuilder;
+	}
+
+	public InformationRequestBuilder withOrganization(OrganizationBuilder organization) {
+		this.orgBuilder = organization;
+		return this;
+	}
+
 }

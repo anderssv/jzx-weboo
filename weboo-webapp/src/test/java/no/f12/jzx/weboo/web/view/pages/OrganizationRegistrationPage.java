@@ -26,7 +26,6 @@ public class OrganizationRegistrationPage extends AbstractPage {
 
 	public void fillIn(Organization org) {
 		name.sendKeys(org.getName());
-		organizationNumber.sendKeys(org.getOrganizationNumber().getValue());
 	}
 
 	public void submit() {
@@ -48,7 +47,7 @@ public class OrganizationRegistrationPage extends AbstractPage {
 		
 	}
 
-	public void clickLookup() {
+	public void lookup() {
 		lookup.click();
 		
 	}

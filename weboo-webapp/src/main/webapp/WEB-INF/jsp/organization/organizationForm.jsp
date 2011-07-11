@@ -5,19 +5,28 @@
 
 <html>
 <head>
-	<title>Register Organization</title>
+<title>Register Organization</title>
 </head>
 <body>
 
 
 	<form:form modelAttribute="informationRequest.organization">
-		
+
 		<form:errors id="errors" path="*" />
-		
-		<label>Organization name:</label><form:input path="name" />
-		<label>Organization number:</label><form:input path="organizationNumber" />
-		<input type="submit" value="Lookup" name="lookup" id="lookup"/>
-		<input type="submit" value="Save" name="save" id="save" />
+		<c:if
+			test="${informationRequest.organization.organizationNumber eq null}">
+			<label>Organization number:</label>
+			<form:input path="organizationNumber" />
+			<input type="submit" value="Lookup" name="lookup" id="lookup" />
+		</c:if>
+		<c:if
+			test="${informationRequest.organization.organizationNumber ne null}">
+			<label>Organization number:</label><c:out value="${informationRequest.organization.organizationNumber}"/>
+			<label>Organization name:</label>
+			<form:input path="name" />
+			<input type="submit" value="Save" name="save" id="save" />
+		</c:if>
+
 	</form:form>
 
 </body>
