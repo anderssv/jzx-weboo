@@ -4,6 +4,7 @@ import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_CONFIRMATIO
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_INFORMATION_REQUEST;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_NEW;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_ORGANIZATION;
+import static no.f12.jzx.weboo.web.controller.NavigationRegistry.URL_RECEIVED;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_FORM;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_LIST;
 import static no.f12.jzx.weboo.web.controller.NavigationRegistry.VIEW_INFORMATION_REQUEST_SUMMARY;
@@ -106,6 +107,11 @@ public class InformationRequestController {
 
 		status.setComplete();
 		return redirectTo(url(URL_INFORMATION_REQUEST, Long.toString(informationRequest.getId()), URL_CONFIRMATION));
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "{requestId}/" + URL_RECEIVED)
+	public String registerRequestAsReceived(){
+		return VIEW_INFORMATION_REQUEST_LIST;
 	}
 
 	public void setOrganizationRepository(InformationRequestRepository orgRepo) {

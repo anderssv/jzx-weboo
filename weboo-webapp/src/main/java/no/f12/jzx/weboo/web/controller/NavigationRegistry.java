@@ -8,6 +8,8 @@ public class NavigationRegistry {
 	public static final String URL_INFORMATION_REQUEST = "informationRequest";
 
 	public static final String URL_ORGANIZATION = "organization";
+	
+	public static final String URL_RECEIVED = "received";
 
 	public static final String VIEW_ORGANIZATION = URL_ORGANIZATION;
 	public static final String VIEW_ORGANIZATION_FORM = VIEW_ORGANIZATION + "/organizationForm";
