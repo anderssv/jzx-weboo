@@ -2,9 +2,7 @@ package no.f12.jzx.weboo.web.view;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.InformationRequestBuilder;
-import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
-import no.f12.jzx.weboo.test.OrganizationDataProvider;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
