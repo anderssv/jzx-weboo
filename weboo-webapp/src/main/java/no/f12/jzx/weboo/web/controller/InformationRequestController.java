@@ -110,9 +110,9 @@ public class InformationRequestController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "{requestId}/" + URL_RECEIVED)
-	public String registerRequestAsReceived(){
-		
-		return VIEW_INFORMATION_REQUEST_LIST;
+	public String registerRequestAsReceived(@ModelAttribute InformationRequest informationRequest){
+		informationRequest.received();
+		return redirectTo(url("/", URL_INFORMATION_REQUEST));
 	}
 
 	public void setOrganizationRepository(InformationRequestRepository orgRepo) {

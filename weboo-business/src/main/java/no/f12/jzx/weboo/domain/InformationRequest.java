@@ -6,6 +6,7 @@ public class InformationRequest {
 
 	private Long id;
 	private String title;
+	private Boolean received = false;
 
 	@Valid
 	private Organization organization;
@@ -32,6 +33,14 @@ public class InformationRequest {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public void received(){
+		received = true;
+	}
+
+	public Boolean getReceived() {
+		return received;
 	}
 
 }

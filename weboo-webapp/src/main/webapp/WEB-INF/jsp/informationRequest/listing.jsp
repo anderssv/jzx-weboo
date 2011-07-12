@@ -14,7 +14,14 @@
 			<div class="informationRequest">
 				<span class="requestNumber">${informationRequest.id}</span>
 				<span class="requestTitle">${informationRequest.title}</span>
-				<span class="received"><a href="informationRequest/${informationRequest.id}/received">Received</a></span>
+				<span class="status">
+					<c:if test="${informationRequest.received eq true}">
+						Done
+					</c:if>
+					<c:if test="${informationRequest.received eq false}">
+						<a href="informationRequest/${informationRequest.id}/received">Open</a>
+					</c:if>
+				</span>
 			</div>
 		</c:forEach>
 	</div>

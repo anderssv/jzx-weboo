@@ -67,7 +67,7 @@ public class ListRequestsPage extends AbstractPage {
 
 	public void clickReceived(InformationRequest informationRequest) {
 		WebElement requestRow = findElementRow(informationRequest);
-		WebElement receivedElement = requestRow.findElement(By.className("received"));
+		WebElement receivedElement = requestRow.findElement(By.className("status"));
 		WebElement receivedLinkElement = receivedElement.findElement(By.tagName("a"));
 		receivedLinkElement.click();
 		
@@ -83,6 +83,12 @@ public class ListRequestsPage extends AbstractPage {
 			}
 		} 
 		return null;
+	}
+
+	public void assertReceived(InformationRequest informationRequest) {
+		WebElement requestRow = findElementRow(informationRequest);
+		WebElement receivedElement = requestRow.findElement(By.className("status"));
+		assertEquals("Done", receivedElement.getText());
 	}
 
 }
