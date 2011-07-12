@@ -65,4 +65,23 @@ public class ListRequestsPage extends AbstractPage {
 		assertEquals(sortedNameList, nameList);
 	}
 
+	public void clickReceived(InformationRequest informationRequest) {
+		WebElement requestRow = findElementRow(informationRequest);
+		WebElement receivedElement = requestRow.findElement(By.className("received"));
+		receivedElement.click();
+		
+		
+	}
+
+	private WebElement findElementRow(InformationRequest informationRequest) {
+		List<WebElement> requestRows = requestListing.findElements(By.className("informationRequest"));
+		for (WebElement row : requestRows) {
+			WebElement requestNumber = row.findElement(By.className("requestNumber"));
+			if (requestNumber.getText().equals(Long.toString(informationRequest.getId()))){
+				return row;
+			}
+		} 
+		return null;
+	}
+
 }

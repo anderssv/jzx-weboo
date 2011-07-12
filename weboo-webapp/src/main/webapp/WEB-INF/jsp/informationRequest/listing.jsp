@@ -14,6 +14,7 @@
 			<div class="informationRequest">
 				<span class="requestNumber">${informationRequest.id}</span>
 				<span class="requestTitle">${informationRequest.title}</span>
+				<span class="received"><a href="informationRequest/${informationRequest.id}/received">Received</a></span>
 			</div>
 		</c:forEach>
 	</div>

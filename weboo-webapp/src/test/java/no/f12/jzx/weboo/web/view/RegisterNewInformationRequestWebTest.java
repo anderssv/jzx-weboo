@@ -3,7 +3,6 @@ package no.f12.jzx.weboo.web.view;
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.InformationRequestBuilder;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
-import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
@@ -18,8 +17,8 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 
 		registerRequest(request);
 
-		InformationRequestSummaryPage overviewPage = overviewPage();
-		overviewPage.assertRequestRegistered(request);
+		InformationRequestSummaryPage informationRequestSummaryPage = requestSummaryPage();
+		informationRequestSummaryPage.assertRequestRegistered(request);
 	}
 
 	@Test
@@ -55,47 +54,6 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		listPage.assertShows(request1);
 		listPage.assertShows(request2);
 		listPage.assertAlphabeticalSorting();
-	}
-
-	private InformationRequestSummaryPage registerOrganization(InformationRequest request, boolean allowExistingOrganization) {
-		OrganizationRegistrationPage orgPage = organizationPage();
-		
-		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
-		orgPage.lookup();
-
-		if (orgPage.hitOnLookup()) {
-			orgPage.assertOrganisationName(request.getOrganization().getName());
-		} else {
-			orgPage.fillIn(request.getOrganization());
-		}
-		
-		orgPage.submit();
-
-		InformationRequestSummaryPage overviewPage = overviewPage();
-		overviewPage.assertAt();
-		return overviewPage;	
-	}
-
-	private OrganizationRegistrationPage registerRequestInformation(InformationRequest request) {
-		InformationRequestPage requestPage = informationRequestPage();
-		
-		requestPage.goTo();
-		requestPage.assertAt();
-
-		requestPage.fillIn(request);
-		requestPage.submit();
-
-		OrganizationRegistrationPage orgPage = organizationPage();
-		orgPage.assertAt();
-		return orgPage;
-	}
-
-	private Long registerRequest(InformationRequest request) {
-		registerRequestInformation(request);
-		InformationRequestSummaryPage overviewPage = registerOrganization(request, false);
-		
-		overviewPage.assertAt();
-		return overviewPage.getRegisteredRequestIdentifier();
 	}
 
 }
