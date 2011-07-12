@@ -39,53 +39,6 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		orgPage.assertOrganisationName(informationRequest2.getOrganization().getName());
 	}
 
-	private InformationRequestSummaryPage registerOrganization(InformationRequest request, boolean allowExistingOrganization) {
-		OrganizationRegistrationPage orgPage = organizationPage();
-		
-		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
-		orgPage.lookup();
-		
-		if (orgPage.hitOnLookup() && !allowExistingOrganization){
-			throw new IllegalStateException();
-		}
-		if (!orgPage.hitOnLookup()){
-			orgPage.fillIn(request.getOrganization());
-		}
-		
-		orgPage.submit();
-
-		InformationRequestSummaryPage overviewPage = overviewPage();
-		overviewPage.assertAt();
-		return overviewPage;	
-	}
-
-	private OrganizationRegistrationPage registerRequestInformation(InformationRequest request) {
-		InformationRequestPage requestPage = informationRequestPage();
-		OrganizationRegistrationPage orgPage = organizationPage();
-		
-		requestPage.goTo();
-		requestPage.assertAt();
-
-		requestPage.fillIn(request);
-		requestPage.submit();
-
-		orgPage.assertAt();
-		return orgPage;
-	}
-
-	private Long registerRequest(InformationRequest request) {
-		OrganizationRegistrationPage orgPage = registerRequestInformation(request);
-		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
-		orgPage.lookup();
-		orgPage.fillIn(request.getOrganization());	
-
-		orgPage.submit();
-		InformationRequestSummaryPage overviewPage = overviewPage();
-
-		overviewPage.assertAt();
-		return overviewPage.getRegisteredRequestIdentifier();
-	}
-
 	@Test
 	public void shouldListAllRequestsSortedOnDate() {
 		InformationRequest request1 = InformationRequestDataProvider.defaultInformationRequest().title("Request2").build();
@@ -102,6 +55,47 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		listPage.assertShows(request1);
 		listPage.assertShows(request2);
 		listPage.assertAlphabeticalSorting();
+	}
+
+	private InformationRequestSummaryPage registerOrganization(InformationRequest request, boolean allowExistingOrganization) {
+		OrganizationRegistrationPage orgPage = organizationPage();
+		
+		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
+		orgPage.lookup();
+
+		if (orgPage.hitOnLookup()) {
+			orgPage.assertOrganisationName(request.getOrganization().getName());
+		} else {
+			orgPage.fillIn(request.getOrganization());
+		}
+		
+		orgPage.submit();
+
+		InformationRequestSummaryPage overviewPage = overviewPage();
+		overviewPage.assertAt();
+		return overviewPage;	
+	}
+
+	private OrganizationRegistrationPage registerRequestInformation(InformationRequest request) {
+		InformationRequestPage requestPage = informationRequestPage();
+		
+		requestPage.goTo();
+		requestPage.assertAt();
+
+		requestPage.fillIn(request);
+		requestPage.submit();
+
+		OrganizationRegistrationPage orgPage = organizationPage();
+		orgPage.assertAt();
+		return orgPage;
+	}
+
+	private Long registerRequest(InformationRequest request) {
+		registerRequestInformation(request);
+		InformationRequestSummaryPage overviewPage = registerOrganization(request, false);
+		
+		overviewPage.assertAt();
+		return overviewPage.getRegisteredRequestIdentifier();
 	}
 
 }

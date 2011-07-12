@@ -43,8 +43,6 @@ public class OrganizationRegistrationPage extends AbstractPage {
 
 	public void fillIn(OrganizationNumber organizationNumber) {
 		this.organizationNumber.sendKeys(organizationNumber.getValue());
-		
-		
 	}
 
 	public void lookup() {
