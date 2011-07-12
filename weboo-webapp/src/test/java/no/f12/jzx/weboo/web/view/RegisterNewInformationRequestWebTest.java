@@ -47,7 +47,6 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		orgPage.fillIn(request2.getOrganization().getOrganizationNumber());
 		orgPage.lookup();
 		orgPage.assertOrganisationName(request.getOrganization().getName());
-
 	}
 
 	private Long registerRequest(InformationRequest request) {

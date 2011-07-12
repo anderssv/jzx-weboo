@@ -15,6 +15,8 @@ import no.f12.jzx.weboo.testutil.BeansUtil;
 
 import org.junit.Test;
 import org.springframework.validation.DirectFieldBindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.support.SimpleSessionStatus;
 
 public class InformationRequestControllerTest {
 
@@ -25,10 +27,11 @@ public class InformationRequestControllerTest {
 		controller.setOrganizationRepository(orgRepo);
 
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
-		String resultingView = controller.registerNewOrganization(request, new DirectFieldBindingResult(request,
-				BeansUtil.beanName(InformationRequest.class)));
+		Errors errorsObject = new DirectFieldBindingResult(request, BeansUtil.beanName(InformationRequest.class));
+		controller.registerRequestInformation(request, errorsObject);
+		String resultingView = controller.registerNewOrganization(request, errorsObject, new SimpleSessionStatus());
 
-		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, URL_CONFIRMATION)), resultingView);
+		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, Long.toString(request.getId()),  URL_CONFIRMATION)), resultingView);
 		assertNotNull(orgRepo.getOrganization(request.getOrganization().getId()));
 	}
 
