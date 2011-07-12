@@ -17,7 +17,6 @@ import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.Organization;
-import no.f12.jzx.weboo.domain.OrganizationNumber;
 import no.f12.jzx.weboo.domain.repository.InformationRequestRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
