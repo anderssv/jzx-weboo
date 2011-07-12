@@ -111,6 +111,7 @@ public class InformationRequestController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "{requestId}/" + URL_RECEIVED)
 	public String registerRequestAsReceived(){
+		
 		return VIEW_INFORMATION_REQUEST_LIST;
 	}
 
