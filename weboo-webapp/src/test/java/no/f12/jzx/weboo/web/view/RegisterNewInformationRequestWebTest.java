@@ -2,9 +2,7 @@ package no.f12.jzx.weboo.web.view;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.InformationRequestBuilder;
-import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
-import no.f12.jzx.weboo.test.OrganizationDataProvider;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
@@ -26,34 +24,45 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 
 	@Test
 	public void shouldLookupExistingOrganisation() throws Exception {
-		InformationRequestBuilder requestBuilder = InformationRequestDataProvider.defaultInformationRequest();
-		requestBuilder.getOrganization().withName("Hello");
-		InformationRequest request = requestBuilder.build();
+		InformationRequestBuilder informationRequestBuilder = InformationRequestDataProvider.defaultInformationRequest();
+		InformationRequest informationRequest = informationRequestBuilder.build();
+		registerRequestInformation(informationRequest);
+		registerOrganization(informationRequest, true);
 
-		registerRequest(request);
-		InformationRequestSummaryPage overviewPage = overviewPage();
-		overviewPage.assertRequestRegistered(request);
-
-		InformationRequest request2 = InformationRequestDataProvider.defaultInformationRequest()
-				.withOrganization(requestBuilder.getOrganization()).build();
-		InformationRequestPage requestPage = informationRequestPage();
-		requestPage.goTo();
-		requestPage.assertAt();
-		requestPage.fillIn(request2);
-		requestPage.submit();
-
-		OrganizationRegistrationPage orgPage = organizationPage();
-		orgPage.assertAt();
-		orgPage.fillIn(request2.getOrganization().getOrganizationNumber());
+		InformationRequest informationRequest2 = InformationRequestDataProvider.defaultInformationRequest()
+				.withOrganization(informationRequestBuilder.getOrganization()).build();
+		
+		OrganizationRegistrationPage orgPage = registerRequestInformation(informationRequest2);
+		orgPage.fillIn(informationRequest2.getOrganization().getOrganizationNumber());
 		orgPage.lookup();
-		orgPage.assertOrganisationName(request.getOrganization().getName());
+		
+		orgPage.assertOrganisationName(informationRequest2.getOrganization().getName());
 	}
 
-	private Long registerRequest(InformationRequest request) {
+	private InformationRequestSummaryPage registerOrganization(InformationRequest request, boolean allowExistingOrganization) {
+		OrganizationRegistrationPage orgPage = organizationPage();
+		
+		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
+		orgPage.lookup();
+		
+		if (orgPage.hitOnLookup() && !allowExistingOrganization){
+			throw new IllegalStateException();
+		}
+		if (!orgPage.hitOnLookup()){
+			orgPage.fillIn(request.getOrganization());
+		}
+		
+		orgPage.submit();
+
+		InformationRequestSummaryPage overviewPage = overviewPage();
+		overviewPage.assertAt();
+		return overviewPage;	
+	}
+
+	private OrganizationRegistrationPage registerRequestInformation(InformationRequest request) {
 		InformationRequestPage requestPage = informationRequestPage();
 		OrganizationRegistrationPage orgPage = organizationPage();
-		InformationRequestSummaryPage overviewPage = overviewPage();
-
+		
 		requestPage.goTo();
 		requestPage.assertAt();
 
@@ -61,10 +70,17 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		requestPage.submit();
 
 		orgPage.assertAt();
+		return orgPage;
+	}
+
+	private Long registerRequest(InformationRequest request) {
+		OrganizationRegistrationPage orgPage = registerRequestInformation(request);
 		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
 		orgPage.lookup();
-		orgPage.fillIn(request.getOrganization());
+		orgPage.fillIn(request.getOrganization());	
+
 		orgPage.submit();
+		InformationRequestSummaryPage overviewPage = overviewPage();
 
 		overviewPage.assertAt();
 		return overviewPage.getRegisteredRequestIdentifier();
