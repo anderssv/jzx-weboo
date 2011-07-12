@@ -19,7 +19,8 @@
 						Done
 					</c:if>
 					<c:if test="${informationRequest.received eq false}">
-						<a href="informationRequest/${informationRequest.id}/received">Open</a>
+						<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
+						<a href="${requestReceivedUrl}">Open</a>
 					</c:if>
 				</span>
 			</div>
