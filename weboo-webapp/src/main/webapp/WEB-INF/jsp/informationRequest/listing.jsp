@@ -10,22 +10,35 @@
 <body>
 
 	<div id="requestListing">
-		<c:forEach items="${requests}" var="informationRequest">
-			<div class="informationRequest">
-				<span class="requestNumber">${informationRequest.id}</span>
-				<span class="requestTitle">${informationRequest.title}</span>
-				<span class="status">
-					<c:if test="${informationRequest.received eq true}">
-						Done
-					</c:if>
-					<c:if test="${informationRequest.received eq false}">
-						<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
-						<a href="${requestReceivedUrl}">Open</a>
-					</c:if>
-				</span>
-			</div>
-		</c:forEach>
+	   <table summary="All information requests">
+	    <caption>All information requests</caption>
+			<thead>
+				<tr>
+					<th>Request number</th>
+					<th>Request title</th>
+					<th>Request status</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach items="${requests}" var="informationRequest">
+				<div class="informationRequest">
+					<tr>
+						<td><span class="requestNumber">${informationRequest.id}</span></td>
+						<td> <span class="requestTitle">${informationRequest.title}</span></td> 
+						<td> <span class="status"> <c:choose>
+							<c:when test="${informationRequest.received eq true}">Done</c:when>
+							<c:otherwise>
+								<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
+								<a href="${requestReceivedUrl}">Open</a>
+							</c:otherwise>
+						</c:choose> 
+						</span>
+						</td>
+					</tr>
+				</div>
+			</c:forEach>
+			</tbody>
+			</table>
 	</div>
-
 </body>
 </html>
