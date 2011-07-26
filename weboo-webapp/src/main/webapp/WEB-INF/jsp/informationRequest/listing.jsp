@@ -31,7 +31,7 @@
 							<span class="operations"> 
 								<c:if test="${informationRequest.received eq false}">
 									<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
-									<a href="${requestReceivedUrl}">Open</a>
+									<a href="${requestReceivedUrl}">Close</a>
 								</c:if>
 							</span>
 						</td>
@@ -43,3 +43,4 @@
 
 </body>
 </html>
+	
