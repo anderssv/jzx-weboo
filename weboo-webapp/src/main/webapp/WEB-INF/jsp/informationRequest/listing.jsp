@@ -5,43 +5,41 @@
 
 <html>
 <head>
-<title>All information requests</title>
+	<title>All information requests</title>
 </head>
+
 <body>
 
 	<div id="requestListing">
 	   <table summary="All information requests">
-	    <caption>All information requests</caption>
+	    	<caption>All information requests</caption>
 			<thead>
 				<tr>
 					<th>Request number</th>
 					<th>Request title</th>
 					<th>Request status</th>
+					<th>Request operations</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${requests}" var="informationRequest">
-				<div class="informationRequest">
-					<tr>
+				<c:forEach items="${requests}" var="informationRequest">
+					<tr class="informationRequest">
 						<td><span class="requestNumber">${informationRequest.id}</span></td>
 						<td><span class="requestTitle">${informationRequest.title}</span></td>
 						<td><span class="status">${informationRequest.received}</span></td> 
 						<td> 
 							<span class="operations"> 
-								<c:choose>
-									<c:when test="${informationRequest.received eq true}">Done</c:when>
-									<c:otherwise>
-										<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
-										<a href="${requestReceivedUrl}">Open</a>
-									</c:otherwise>
-								</c:choose> 
+								<c:if test="${informationRequest.received eq false}">
+									<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
+									<a href="${requestReceivedUrl}">Open</a>
+								</c:if>
 							</span>
 						</td>
 					</tr>
-				</div>
-			</c:forEach>
+				</c:forEach>
 			</tbody>
-			</table>
+		</table>
 	</div>
+
 </body>
 </html>
