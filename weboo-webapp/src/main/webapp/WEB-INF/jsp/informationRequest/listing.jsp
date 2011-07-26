@@ -24,15 +24,18 @@
 				<div class="informationRequest">
 					<tr>
 						<td><span class="requestNumber">${informationRequest.id}</span></td>
-						<td> <span class="requestTitle">${informationRequest.title}</span></td> 
-						<td> <span class="status"> <c:choose>
-							<c:when test="${informationRequest.received eq true}">Done</c:when>
-							<c:otherwise>
-								<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
-								<a href="${requestReceivedUrl}">Open</a>
-							</c:otherwise>
-						</c:choose> 
-						</span>
+						<td><span class="requestTitle">${informationRequest.title}</span></td>
+						<td><span class="status">${informationRequest.received}</span></td> 
+						<td> 
+							<span class="operations"> 
+								<c:choose>
+									<c:when test="${informationRequest.received eq true}">Done</c:when>
+									<c:otherwise>
+										<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
+										<a href="${requestReceivedUrl}">Open</a>
+									</c:otherwise>
+								</c:choose> 
+							</span>
 						</td>
 					</tr>
 				</div>
