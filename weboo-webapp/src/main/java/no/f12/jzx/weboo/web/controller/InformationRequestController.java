@@ -14,7 +14,6 @@ import static no.f12.jzx.weboo.web.controller.NavigationRegistry.url;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
@@ -31,7 +30,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.context.request.WebRequest;
 
 @Controller
 @RequestMapping(value = "/" + URL_INFORMATION_REQUEST)
@@ -62,10 +60,8 @@ public class InformationRequestController {
 	
 
 	@RequestMapping(method = RequestMethod.GET, value = URL_NEW)
-	public String showNewRegistrationForm(Model model, WebRequest request, HttpSession session) {
+	public String showNewRegistrationForm(Model model) {
 		InformationRequest newInformationRequest = newInformationRequest();
-		request.removeAttribute("informationRequest", WebRequest.SCOPE_SESSION);
-		request.setAttribute("informationRequest", newInformationRequest, WebRequest.SCOPE_SESSION);
 		model.addAttribute("informationRequest", newInformationRequest);
 
 		return VIEW_INFORMATION_REQUEST_FORM;
