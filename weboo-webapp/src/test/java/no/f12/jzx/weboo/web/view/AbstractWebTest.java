@@ -6,13 +6,12 @@ import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.jetty.WebServer;
 import no.f12.jzx.weboo.web.view.pages.AbstractPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
+import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
-import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -24,16 +23,17 @@ public abstract class AbstractWebTest {
 
 	protected static final String APPCONTEXT = "myapp";
 	private static final String WEBAPP_PATH = "src/main/webapp";
-	
+
 	private static Logger LOGGER;
-	
+
 	private static volatile WebServer server;
 
 	private WebDriver driver;
 
-	public AbstractWebTest(){
+	public AbstractWebTest() {
 		LOGGER = Logger.getLogger(getClass());
 	}
+
 	@BeforeClass
 	public static void createServer() throws Exception {
 		// Needs to be set so we have defaults for the tests
@@ -75,7 +75,8 @@ public abstract class AbstractWebTest {
 	}
 
 	protected InformationRequestSummaryPage requestSummaryPage() {
-		InformationRequestSummaryPage informationRequestSummaryPage = new InformationRequestSummaryPage(getDriver(), getApplicationUrl());
+		InformationRequestSummaryPage informationRequestSummaryPage = new InformationRequestSummaryPage(getDriver(),
+				getApplicationUrl());
 		return initializePage(informationRequestSummaryPage);
 	}
 
@@ -94,41 +95,45 @@ public abstract class AbstractWebTest {
 
 		return page;
 	}
-	protected InformationRequestSummaryPage registerOrganization(InformationRequest request, boolean allowExistingOrganization) {
+
+	protected InformationRequestSummaryPage registerOrganization(InformationRequest request,
+			boolean allowExistingOrganization) {
 		OrganizationRegistrationPage orgPage = organizationPage();
-		
+
 		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
 		orgPage.lookup();
-	
+
 		if (orgPage.hitOnLookup()) {
 			orgPage.assertOrganisationName(request.getOrganization().getName());
 		} else {
 			orgPage.fillIn(request.getOrganization());
 		}
-		
+
 		orgPage.submit();
-	
+
 		InformationRequestSummaryPage informationRequestSummaryPage = requestSummaryPage();
 		informationRequestSummaryPage.assertAt();
-		return informationRequestSummaryPage;	
+		return informationRequestSummaryPage;
 	}
+
 	protected OrganizationRegistrationPage registerRequestInformation(InformationRequest request) {
 		InformationRequestPage requestPage = informationRequestPage();
-		
+
 		requestPage.goTo();
 		requestPage.assertAt();
-	
+
 		requestPage.fillIn(request);
 		requestPage.submit();
-	
+
 		OrganizationRegistrationPage orgPage = organizationPage();
 		orgPage.assertAt();
 		return orgPage;
 	}
+
 	protected Long registerRequest(InformationRequest request) {
 		registerRequestInformation(request);
 		InformationRequestSummaryPage informationRequestSummaryPage = registerOrganization(request, false);
-		
+
 		informationRequestSummaryPage.assertAt();
 		return informationRequestSummaryPage.getRegisteredRequestIdentifier();
 	}
