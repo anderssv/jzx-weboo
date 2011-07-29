@@ -27,7 +27,7 @@
 						<td><span class="requestNumber">${informationRequest.id}</span></td>
 						<td><span class="requestTitle">${informationRequest.title}</span></td>
 						<td><span class="status">${informationRequest.received}</span></td> 
-						<td> 
+						<td>
 							<span class="operations"> 
 								<c:if test="${informationRequest.received eq false}">
 									<c:url value="/informationRequest/${informationRequest.id}/received" var="requestReceivedUrl" />
