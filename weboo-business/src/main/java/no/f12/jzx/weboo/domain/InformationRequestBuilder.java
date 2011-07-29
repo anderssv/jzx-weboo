@@ -42,8 +42,9 @@ public class InformationRequestBuilder implements Builder<InformationRequest> {
 		return this;
 	}
 
-	public void daysSinceRegistration(int i) {
+	public InformationRequestBuilder daysSinceRegistration(int i) {
 		this.ir.setRegistrationDate(new DateTime().minusDays(i));
+		return this;
 	}
 
 }

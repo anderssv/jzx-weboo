@@ -20,4 +20,6 @@ public interface InformationRequestRepository {
 
 	public Organization findOrganization(OrganizationNumber organizationNumber);
 
+	public List<InformationRequest> getSlowestRequests(int numberOfRequests);
+
 }
