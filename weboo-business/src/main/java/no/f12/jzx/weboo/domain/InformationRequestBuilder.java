@@ -1,5 +1,7 @@
 package no.f12.jzx.weboo.domain;
 
+import org.joda.time.DateTime;
+
 public class InformationRequestBuilder implements Builder<InformationRequest> {
 
 	private InformationRequest ir;
@@ -38,6 +40,10 @@ public class InformationRequestBuilder implements Builder<InformationRequest> {
 	public InformationRequestBuilder withOrganization(OrganizationBuilder organization) {
 		this.orgBuilder = organization;
 		return this;
+	}
+
+	public void daysSinceRegistration(int i) {
+		this.ir.setRegistrationDate(new DateTime().minusDays(i));
 	}
 
 }

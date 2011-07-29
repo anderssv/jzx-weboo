@@ -2,6 +2,9 @@ package no.f12.jzx.weboo.domain;
 
 import javax.validation.Valid;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
 public class InformationRequest {
 
 	private Long id;
@@ -10,7 +13,12 @@ public class InformationRequest {
 
 	@Valid
 	private Organization organization;
+	private DateTime regitrationDate;
 
+	public InformationRequest() {
+		this.regitrationDate = new DateTime();
+	}
+	
 	public String getTitle() {
 		return this.title;
 	}
@@ -41,6 +49,19 @@ public class InformationRequest {
 
 	public Boolean getReceived() {
 		return received;
+	}
+
+	public int getDaysSinceRegistration() {
+		Days d = Days.daysBetween(this.getRegistratioinDate(), new DateTime());
+		return d.getDays();
+	}
+
+	private DateTime getRegistratioinDate() {
+		return this.regitrationDate;
+	}
+
+	public void setRegistrationDate(DateTime registrationDate) {
+		this.regitrationDate = registrationDate;
 	}
 
 }

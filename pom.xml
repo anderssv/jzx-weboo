@@ -92,6 +92,13 @@
 			</dependency>
 
 			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+
+
+			<dependency>
 				<groupId>no.f12.jzx.weboo</groupId>
 				<artifactId>weboo-jettyserver</artifactId>
 				<version>${project.version}</version>
