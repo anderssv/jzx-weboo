@@ -59,9 +59,7 @@ public abstract class AbstractWebTest {
 
 	protected String getApplicationUrl() {
 		String applicationUrl = "http://localhost:" + server.getPort() + "/" + APPCONTEXT + "/";
-		LOGGER.log(Level.INFO, "ApplicationUrl: " + applicationUrl);
 		return applicationUrl;
-
 	}
 
 	protected WebDriver getDriver() {

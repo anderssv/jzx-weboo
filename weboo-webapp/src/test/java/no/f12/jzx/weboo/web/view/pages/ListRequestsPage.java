@@ -20,6 +20,7 @@ import com.google.common.collect.Maps;
 public class ListRequestsPage extends AbstractPage {
 
 	private WebElement requestListing;
+	private WebElement slowestRequestsLink;
 	
 	public ListRequestsPage(WebDriver driver, String applicationUrl) {
 		super(driver, applicationUrl);
@@ -87,6 +88,10 @@ public class ListRequestsPage extends AbstractPage {
 		WebElement requestRow = findElementRow(informationRequest);
 		WebElement receivedElement = requestRow.findElement(By.className("status"));
 		assertEquals("true", receivedElement.getText());
+	}
+
+	public void clickSlowestLink() {
+		slowestRequestsLink.click();
 	}
 
 }

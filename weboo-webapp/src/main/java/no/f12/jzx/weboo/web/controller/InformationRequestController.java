@@ -52,6 +52,14 @@ public class InformationRequestController {
 
 		return VIEW_INFORMATION_REQUEST_LIST;
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, value="slowest")
+	public String listSlowestRequests(Model model) {
+		model.addAttribute("requests", this.orgRepo.getSlowestRequests(10));
+		
+		return VIEW_INFORMATION_REQUEST_LIST;
+	}
+	
 
 	@RequestMapping(method = RequestMethod.GET, value = URL_NEW)
 	public String showNewRegistrationForm(Model model, WebRequest request, HttpSession session) {

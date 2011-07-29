@@ -72,11 +72,16 @@ public class InformationRequestRepositoryImpl implements InformationRequestRepos
 
 	@Override
 	public List<InformationRequest> getSlowestRequests(int numberOfRequests) {
-		return new Ordering<InformationRequest>() {
+		Ordering<InformationRequest> ordering = new Ordering<InformationRequest>() {
 			@Override
 			public int compare(InformationRequest left, InformationRequest right) {
 				return right.getDaysSinceRegistration() - left.getDaysSinceRegistration();
 			}
-		}.sortedCopy(this.getRequests()).subList(0, numberOfRequests);
+		};
+		List<InformationRequest> requests = ordering.sortedCopy(this.requests.values());
+		if (requests.size() < numberOfRequests) {
+			return requests;
+		}
+		return requests.subList(0, numberOfRequests);
 	}
 }

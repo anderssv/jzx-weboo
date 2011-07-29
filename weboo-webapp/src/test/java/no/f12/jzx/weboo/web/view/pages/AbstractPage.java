@@ -24,7 +24,6 @@ public abstract class AbstractPage {
 	public void assertAt() {
 		Assert.assertEquals("Title does not match at url: " + driver.getCurrentUrl(), getTitle(), getDriver()
 				.getTitle());
-		
 	}
 
 	public void assertErrors() {

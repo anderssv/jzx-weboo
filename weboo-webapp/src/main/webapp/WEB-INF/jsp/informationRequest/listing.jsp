@@ -9,6 +9,14 @@
 </head>
 
 <body>
+	
+	<div id="options">
+		<c:url value="informationRequest/slowest" var="slowestUrl" />
+		<a href="${slowestUrl}" id="slowestRequestsLink">Slowest</a>
+		
+		<c:url value="informationRequest" var="allUrl" />
+		<a href="${allUrl}" id="allRequestsLink">All</a>
+	</div>
 
 	<div id="requestListing">
 	   <table summary="All information requests">
