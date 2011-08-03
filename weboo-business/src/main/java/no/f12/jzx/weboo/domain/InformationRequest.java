@@ -13,12 +13,12 @@ public class InformationRequest {
 
 	@Valid
 	private Organization organization;
-	private DateTime regitrationDate;
+	private DateTime regitrationTime;
 
 	public InformationRequest() {
-		this.regitrationDate = new DateTime();
+		this.regitrationTime = new DateTime();
 	}
-	
+
 	public String getTitle() {
 		return this.title;
 	}
@@ -43,7 +43,7 @@ public class InformationRequest {
 		this.id = id;
 	}
 
-	public void received(){
+	public void received() {
 		received = true;
 	}
 
@@ -52,16 +52,16 @@ public class InformationRequest {
 	}
 
 	public int getDaysSinceRegistration() {
-		Days d = Days.daysBetween(this.getRegistratioinDate(), new DateTime());
+		Days d = Days.daysBetween(this.getRegistrationTime(), new DateTime());
 		return d.getDays();
 	}
 
-	private DateTime getRegistratioinDate() {
-		return this.regitrationDate;
+	public void setRegistrationDate(DateTime registrationTime) {
+		this.regitrationTime = registrationTime;
 	}
 
-	public void setRegistrationDate(DateTime registrationDate) {
-		this.regitrationDate = registrationDate;
+	public DateTime getRegistrationTime() {
+		return this.regitrationTime;
 	}
 
 }

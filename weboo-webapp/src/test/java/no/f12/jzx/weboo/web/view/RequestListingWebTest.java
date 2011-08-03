@@ -10,10 +10,10 @@ import org.junit.Test;
 
 import com.google.common.collect.Lists;
 
-public class RequestListingWebTest extends AbstractWebTest{
-	
+public class RequestListingWebTest extends AbstractWebTest {
+
 	@Test
-	public void shouldBeAbleToClickSummaryItems() throws Exception {
+	public void shouldShowIssueSummaryItems() throws Exception {
 		ListRequestsPage listRequestsPage = listRequestsPage();
 
 		InformationRequest informationRequest = InformationRequestDataProvider.defaultInformationRequest().build();
@@ -21,35 +21,38 @@ public class RequestListingWebTest extends AbstractWebTest{
 		informationRequest.setId(requestId);
 
 		listRequestsPage.goTo();
-		listRequestsPage.assertAt(); 
+		listRequestsPage.assertAt();
 		listRequestsPage.assertShows(informationRequest);
 		listRequestsPage.clickReceived(informationRequest);
-		
+
 		listRequestsPage.assertAt();
 		listRequestsPage.assertReceived(informationRequest);
 	}
 
 	@Test
-	public void shouldBeAbleToMarkCorrectRequestAsReceivedWhenMultipleRequests () throws Exception{
+	public void shouldBeAbleToMarkCorrectRequestAsReceivedWhenMultipleRequests() throws Exception {
 		List<InformationRequest> requests = createRequests(5);
-		
+
 		ListRequestsPage listRequestsPage = listRequestsPage();
 		listRequestsPage.goTo();
-		listRequestsPage.assertAt(); 
-		
+		listRequestsPage.assertAt();
+
 		for (InformationRequest request : requests) {
 			listRequestsPage.assertShows(request);
 			listRequestsPage.clickReceived(request);
 			listRequestsPage.assertReceived(request);
-		}	
+		}
 	}
 
 	@Test
 	public void shouldListSlowestTests() {
+		createRequests(1);
+
 		ListRequestsPage listRequestsPage = listRequestsPage();
 		listRequestsPage.goTo();
 		listRequestsPage.clickSlowestLink();
 		listRequestsPage.assertAt();
+		listRequestsPage.assertRequestsShown();
 	}
 
 	private List<InformationRequest> createRequests(int totalRequests) {

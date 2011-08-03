@@ -32,17 +32,20 @@ public class ListRequestsPage extends AbstractPage {
 	}
 
 	public void assertShows(InformationRequest request) {
+		assertShows("Request with id=" + request.getId() + " not found", request);
+	}
+	public void assertShows(String message, InformationRequest request) {
 		assertNotNull(requestListing);
 		assertTrue(requestListing.isEnabled());
 		
 		Map<Long, String> requests = requestMap();
 		
-		assertTrue(requests.containsKey(request.getId()));
-		assertEquals(request.getTitle(), requests.get(request.getId()));
+		assertTrue(message,requests.containsKey(request.getId()));
+		assertEquals(message,request.getTitle(), requests.get(request.getId()));
 	}
 
 	private Map<Long, String> requestMap() {
-		List<WebElement> requestElements = requestListing.findElements(By.className("informationRequest"));
+		List<WebElement> requestElements = requestElements();
 		Map<Long, String> requests = Maps.newLinkedHashMap();
 		for (WebElement webElement : requestElements) {
 			WebElement numberElement = webElement.findElement(By.className("requestNumber"));
@@ -74,7 +77,7 @@ public class ListRequestsPage extends AbstractPage {
 	}
 
 	private WebElement findElementRow(InformationRequest informationRequest) {
-		List<WebElement> requestRows = requestListing.findElements(By.className("informationRequest"));
+		List<WebElement> requestRows = requestElements();
 		for (WebElement row : requestRows) {
 			WebElement requestNumber = row.findElement(By.className("requestNumber"));
 			if (requestNumber.getText().equals(Long.toString(informationRequest.getId()))){
@@ -82,6 +85,10 @@ public class ListRequestsPage extends AbstractPage {
 			}
 		} 
 		return null;
+	}
+
+	private List<WebElement> requestElements() {
+		return requestListing.findElements(By.className("informationRequest"));
 	}
 
 	public void assertReceived(InformationRequest informationRequest) {
@@ -92,6 +99,10 @@ public class ListRequestsPage extends AbstractPage {
 
 	public void clickSlowestLink() {
 		slowestRequestsLink.click();
+	}
+
+	public void assertRequestsShown() {
+		assertTrue(requestElements().size() > 0);
 	}
 
 }
