@@ -6,8 +6,17 @@ import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.domain.OrganizationNumber;
 
+import com.google.common.collect.Ordering;
+
 public interface InformationRequestRepository {
 	
+	public static final Ordering<InformationRequest> DAYS_SINCE_REGISTRATION_ORDERING = new Ordering<InformationRequest>() {
+			@Override
+			public int compare(InformationRequest left, InformationRequest right) {
+				return right.getDaysSinceRegistration() - left.getDaysSinceRegistration();
+			}
+		};
+
 	public void addOrganization(Organization organization);
 
 	public Organization getOrganization(Long id);

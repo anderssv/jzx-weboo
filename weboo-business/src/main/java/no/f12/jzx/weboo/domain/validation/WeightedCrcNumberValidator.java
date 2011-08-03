@@ -17,6 +17,10 @@ public class WeightedCrcNumberValidator {
 	}
 
 	private static boolean isValidChecksum(String number, int[] weights, int modulo) {
+		if (number.length() < weights.length + 1) {
+			return false;
+		}
+		
 		int[] numberParts = convertToInts(number);
 		int result = calculateCheckSum(numberParts, weights, modulo);
 

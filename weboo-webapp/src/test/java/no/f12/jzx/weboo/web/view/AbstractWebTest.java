@@ -10,8 +10,6 @@ import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -24,15 +22,9 @@ public abstract class AbstractWebTest {
 	protected static final String APPCONTEXT = "myapp";
 	private static final String WEBAPP_PATH = "src/main/webapp";
 
-	private static Logger LOGGER;
-
 	private static volatile WebServer server;
 
 	private WebDriver driver;
-
-	public AbstractWebTest() {
-		LOGGER = Logger.getLogger(getClass());
-	}
 
 	@BeforeClass
 	public static void createServer() throws Exception {

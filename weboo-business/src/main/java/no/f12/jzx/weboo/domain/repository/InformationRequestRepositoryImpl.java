@@ -14,7 +14,6 @@ import no.f12.jzx.weboo.domain.OrganizationNumber;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Ordering;
 
 @Repository
 public class InformationRequestRepositoryImpl implements InformationRequestRepository {
@@ -72,13 +71,7 @@ public class InformationRequestRepositoryImpl implements InformationRequestRepos
 
 	@Override
 	public List<InformationRequest> getSlowestRequests(int numberOfRequests) {
-		Ordering<InformationRequest> ordering = new Ordering<InformationRequest>() {
-			@Override
-			public int compare(InformationRequest left, InformationRequest right) {
-				return right.getDaysSinceRegistration() - left.getDaysSinceRegistration();
-			}
-		};
-		List<InformationRequest> requests = ordering.sortedCopy(this.requests.values());
+		List<InformationRequest> requests = DAYS_SINCE_REGISTRATION_ORDERING.sortedCopy(this.requests.values());
 		if (requests.size() < numberOfRequests) {
 			return requests;
 		}

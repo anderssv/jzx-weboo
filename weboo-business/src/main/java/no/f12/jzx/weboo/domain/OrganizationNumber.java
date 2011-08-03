@@ -6,10 +6,6 @@ public class OrganizationNumber implements ValueObject {
 
 	private String value;
 
-	private OrganizationNumber(){
-		
-	}
-	
 	public OrganizationNumber(String orgNum) {
 		this.value = orgNum;
 	}
