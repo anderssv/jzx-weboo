@@ -3,6 +3,7 @@ package no.f12.jzx.weboo.web.view;
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.InformationRequestBuilder;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
+import no.f12.jzx.weboo.test.OrganizationDataProvider;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;
 import no.f12.jzx.weboo.web.view.pages.ListRequestsPage;
 import no.f12.jzx.weboo.web.view.pages.OrganizationRegistrationPage;
@@ -11,6 +12,17 @@ import org.junit.Test;
 
 public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 
+	@Test
+	public void shouldNotValidateWhenNotValidOrganizationNumber() throws Exception {
+		InformationRequestBuilder builder = InformationRequestDataProvider.defaultInformationRequest();
+		builder.getOrganization().withOrganizationNumber(OrganizationDataProvider.createInvalidOrganizationNumber());
+		InformationRequest request = builder.build();
+		OrganizationRegistrationPage organizationRegistrationPage = registerRequestInformation(request);
+		organizationRegistrationPage.lookupOrganization(request.getOrganization().getOrganizationNumber());
+		organizationRegistrationPage.assertErrors();
+		
+	}
+	
 	@Test
 	public void shouldRegisterNewRequestWithNewOrganization() {
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
@@ -32,8 +44,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 				.withOrganization(informationRequestBuilder.getOrganization()).build();
 		
 		OrganizationRegistrationPage orgPage = registerRequestInformation(informationRequest2);
-		orgPage.fillIn(informationRequest2.getOrganization().getOrganizationNumber());
-		orgPage.lookup();
+		orgPage.lookupOrganization(informationRequest2.getOrganization().getOrganizationNumber());
 		
 		orgPage.assertOrganisationName(informationRequest2.getOrganization().getName());
 	}

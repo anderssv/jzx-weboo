@@ -15,8 +15,8 @@ public class OrganizationRegistrationPage extends AbstractPage {
 
 	@FindBy(how = How.ID, using="organization.name")
 	private WebElement name;
-	@FindBy(how = How.ID, using="organization.organizationNumber")
-	private WebElement organizationNumber;
+	@FindBy(how = How.ID, using="organizationNumberSearch")
+	private WebElement organizationNumberSearch;
 	private WebElement save;
 	private WebElement lookup;
 
@@ -41,11 +41,9 @@ public class OrganizationRegistrationPage extends AbstractPage {
 		assertAt();
 	}
 
-	public void fillIn(OrganizationNumber organizationNumber) {
-		this.organizationNumber.sendKeys(organizationNumber.getValue());
-	}
-
-	public void lookup() {
+	
+	public void lookupOrganization(OrganizationNumber organizationNumberSearch){
+		this.organizationNumberSearch.sendKeys(organizationNumberSearch.getValue());
 		lookup.click();
 		
 	}

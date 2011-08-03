@@ -10,20 +10,20 @@
 <body>
 
 
-	<form:form modelAttribute="informationRequest.organization">
+	<form:form modelAttribute="organizationForm">
 
 		<form:errors id="errors" path="*" />
-		<c:if
-			test="${informationRequest.organization.organizationNumber eq null}">
+		<c:if test="${organizationForm.organization.organizationNumber eq null}">
 			<label>Organization number:</label>
-			<form:input path="organizationNumber" />
+			<form:input path="organizationNumberSearch" />
 			<input type="submit" value="Lookup" name="lookup" id="lookup" />
 		</c:if>
-		<c:if
-			test="${informationRequest.organization.organizationNumber ne null}">
-			<label>Organization number:</label><c:out value="${informationRequest.organization.organizationNumber}"/>
+		<c:if test="${organizationForm.shouldShowOrganization}">
+			<label>Organization number:</label>
+			<form:hidden path="organization.organizationNumber"/>
+			<c:out value="${organizationForm.organization.organizationNumber}" />
 			<label>Organization name:</label>
-			<form:input path="name" />
+			<form:input path="organization.name" />
 			<input type="submit" value="Save" name="save" id="save" />
 		</c:if>
 
