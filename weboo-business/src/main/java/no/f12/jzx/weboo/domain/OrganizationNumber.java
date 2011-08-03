@@ -1,9 +1,16 @@
 package no.f12.jzx.weboo.domain;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+
+import no.f12.jzx.weboo.domain.validation.NotBlank;
 import no.f12.jzx.weboo.domain.validation.WeightedCrcNumberValidator;
 
 public class OrganizationNumber implements ValueObject {
 
+	@NotBlank
+	@Digits(integer=9, fraction=0)
+	@Min(value=100000000)
 	private String value;
 
 	public OrganizationNumber(String orgNum) {

@@ -15,5 +15,27 @@ public class OrganizationNumberTest {
 
 		assertTrue(createDefaultOrganizationNumber().isValid());
 	}
+	
+	@Test
+	public void shouldNotAllowBlankValue() {
+		assertFalse(new OrganizationNumber("").isValid());
+	}
+	
+	@Test
+	public void shouldNotAllowCharactersInOrganizationNumber() {
+		assertFalse(new OrganizationNumber("Hello").isValid());
+	}
+	
+	@Test
+	public void shouldNotAllowTooShortOrganizationNumber() {
+		assertFalse(new OrganizationNumber("12345678").isValid());
+	}
+	
+	@Test
+	public void shouldNotAllowTooLongOrganizationNumber() {
+		assertFalse(new OrganizationNumber("1234567890").isValid());
+	}
+	
+	
 
 }
