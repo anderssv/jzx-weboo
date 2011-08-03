@@ -34,10 +34,10 @@ public abstract class AbstractPage {
 		return this.applicationUrl;
 	}
 
-	protected abstract String getTitle();
-
 	public void assertText(String textToVerify) {
 		assertTrue("Could not find text: " + textToVerify + "\n" + getDriver().getPageSource(), getDriver()
 				.getPageSource().contains(textToVerify));
 	}
+
+	protected abstract String getTitle();
 }
