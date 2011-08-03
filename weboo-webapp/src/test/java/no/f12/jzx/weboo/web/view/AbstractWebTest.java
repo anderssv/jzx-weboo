@@ -91,7 +91,6 @@ public abstract class AbstractWebTest {
 		OrganizationRegistrationPage orgPage = organizationPage();
 
 		orgPage.lookupOrganization(request.getOrganization().getOrganizationNumber());
-		System.out.println(getDriver().getPageSource());
 		if (orgPage.hitOnLookup()) {
 			orgPage.assertOrganisationName(request.getOrganization().getName());
 		} else {
