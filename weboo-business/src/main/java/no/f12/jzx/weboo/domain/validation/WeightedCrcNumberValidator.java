@@ -1,19 +1,13 @@
 package no.f12.jzx.weboo.domain.validation;
 
-import no.f12.jzx.weboo.domain.OrganizationNumber;
-import no.f12.jzx.weboo.domain.ValueObject;
 
 public class WeightedCrcNumberValidator {
 
 	private static int[] organizationNumberWeights = { 3, 2, 7, 6, 5, 4, 3, 2 };
 	private static int organizationNumberModulo = 11;
 
-	public static boolean isValid(OrganizationNumber organizationNumber) {
-		return isValid(organizationNumber, organizationNumberWeights, organizationNumberModulo);
-	}
-
-	private static boolean isValid(ValueObject value, int[] weights, int modulo) {
-		return isValidChecksum(value.getValue(), weights, modulo);
+	public static boolean isValid(String organizationNumber) {
+		return isValidChecksum(organizationNumber, organizationNumberWeights, organizationNumberModulo);
 	}
 
 	private static boolean isValidChecksum(String number, int[] weights, int modulo) {

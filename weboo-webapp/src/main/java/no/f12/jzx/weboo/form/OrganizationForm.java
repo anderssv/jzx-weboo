@@ -4,11 +4,10 @@ import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.domain.OrganizationNumber;
-import no.f12.jzx.weboo.domain.validation.ValidOrganizationNumber;
 
 public class OrganizationForm {
 	
-	@ValidOrganizationNumber
+	@Valid
 	private OrganizationNumber organizationNumberSearch;
 	
 	@Valid

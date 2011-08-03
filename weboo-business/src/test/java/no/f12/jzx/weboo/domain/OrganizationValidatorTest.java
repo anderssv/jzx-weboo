@@ -40,7 +40,7 @@ public class OrganizationValidatorTest {
 		OrganizationBuilder organizationBuilder = OrganizationDataProvider
 				.createOrganzationWithInvalidOrganizationNumber();
 
-		assertConstraintViolations(organizationBuilder.build(), "organizationNumber", ValidOrganizationNumber.class);
+		assertConstraintViolations(organizationBuilder.build(), "organizationNumber.value", ValidOrganizationNumber.class);
 	}
 
 	@SuppressWarnings("all")
