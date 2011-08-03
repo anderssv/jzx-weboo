@@ -15,7 +15,7 @@ public class OrganizationRegistrationPage extends AbstractPage {
 
 	@FindBy(how = How.ID, using="organization.name")
 	private WebElement name;
-	@FindBy(how = How.ID, using="organization.organizationNumber")
+	@FindBy(how = How.ID, using="organizationNumberSearch")
 	private WebElement organizationNumber;
 	private WebElement save;
 	private WebElement lookup;

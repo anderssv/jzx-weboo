@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.domain.repository.InformationRequestRepository;
+import no.f12.jzx.weboo.form.OrganizationForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -84,25 +85,28 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.GET)
-	public String showOrganizationInput(@ModelAttribute InformationRequest informationRequest) {
+	public String showOrganizationInput(@ModelAttribute OrganizationForm organizationForm, @ModelAttribute InformationRequest informationRequest) {
 		return VIEW_ORGANIZATION_FORM;
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params = "lookup")
-	public String lookupOrganisationName(@ModelAttribute InformationRequest informationRequest, Errors errors) {
+	public String lookupOrganisationName(@ModelAttribute OrganizationForm organizationForm, @ModelAttribute InformationRequest informationRequest, Errors errors) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
 		}
-		Organization org = this.orgRepo.findOrganization(informationRequest.getOrganization().getOrganizationNumber());
+		Organization org = this.orgRepo.findOrganization(organizationForm.getOrganizationNumberSearch());
 		if (org != null) {
 			informationRequest.setOrganization(org);
+			organizationForm.setOrganization(org);
+		}else{
+			organizationForm.registerNewOrganization();
 		}
 
 		return VIEW_ORGANIZATION_FORM;
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params = "save")
-	public String registerNewOrganization(@Valid @ModelAttribute InformationRequest informationRequest, Errors errors, SessionStatus status) {
+	public String registerNewOrganization(@ModelAttribute OrganizationForm organizationForm, @Valid @ModelAttribute InformationRequest informationRequest, Errors errors, SessionStatus status) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
 		}

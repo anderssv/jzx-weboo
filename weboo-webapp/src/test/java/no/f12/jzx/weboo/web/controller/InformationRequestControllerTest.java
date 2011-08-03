@@ -10,6 +10,7 @@ import static org.junit.Assert.assertNotNull;
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.repository.InformationRequestRepository;
 import no.f12.jzx.weboo.domain.repository.InformationRequestRepositoryImpl;
+import no.f12.jzx.weboo.form.OrganizationForm;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
 import no.f12.jzx.weboo.testutil.BeansUtil;
 
@@ -27,9 +28,11 @@ public class InformationRequestControllerTest {
 		controller.setOrganizationRepository(orgRepo);
 
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
+		OrganizationForm organizationForm = new OrganizationForm(request.getOrganization());
+		
 		Errors errorsObject = new DirectFieldBindingResult(request, BeansUtil.beanName(InformationRequest.class));
 		controller.registerRequestInformation(request, errorsObject);
-		String resultingView = controller.registerNewOrganization(request, errorsObject, new SimpleSessionStatus());
+		String resultingView = controller.registerNewOrganization(organizationForm,request, errorsObject, new SimpleSessionStatus());
 
 		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, Long.toString(request.getId()),  URL_CONFIRMATION)), resultingView);
 		assertNotNull(orgRepo.getOrganization(request.getOrganization().getId()));
