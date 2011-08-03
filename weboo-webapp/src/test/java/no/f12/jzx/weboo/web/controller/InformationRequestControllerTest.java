@@ -32,7 +32,7 @@ public class InformationRequestControllerTest {
 		
 		Errors errorsObject = new DirectFieldBindingResult(request, BeansUtil.beanName(InformationRequest.class));
 		controller.registerRequestInformation(request, errorsObject);
-		String resultingView = controller.registerNewOrganization(organizationForm,request, errorsObject, new SimpleSessionStatus());
+		String resultingView = controller.registerNewOrganization(organizationForm,errorsObject, request, new SimpleSessionStatus());
 
 		assertEquals(redirectTo(url(URL_INFORMATION_REQUEST, Long.toString(request.getId()),  URL_CONFIRMATION)), resultingView);
 		assertNotNull(orgRepo.getOrganization(request.getOrganization().getId()));

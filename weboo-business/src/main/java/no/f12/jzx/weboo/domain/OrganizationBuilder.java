@@ -32,4 +32,9 @@ public class OrganizationBuilder implements Builder<Organization> {
 		return new OrganizationBuilder();
 	}
 
+	public void withOrganizationNumber(OrganizationNumber organizationNumber) {
+		org.setOrganizationNumber(organizationNumber);
+		
+	}
+
 }

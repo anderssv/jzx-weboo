@@ -4,9 +4,11 @@ import javax.validation.Valid;
 
 import no.f12.jzx.weboo.domain.Organization;
 import no.f12.jzx.weboo.domain.OrganizationNumber;
+import no.f12.jzx.weboo.domain.validation.ValidOrganizationNumber;
 
 public class OrganizationForm {
 	
+	@ValidOrganizationNumber
 	private OrganizationNumber organizationNumberSearch;
 	
 	@Valid
@@ -34,8 +36,9 @@ public class OrganizationForm {
 		return organizationNumberSearch;
 	}
 	
-	public Boolean getSearchPerformed(){
-		return this.organizationNumberSearch != null;
+	public Boolean getShouldShowOrganization(){
+		return this.organizationNumberSearch != null && this.organizationNumberSearch.isValid();
+		
 	}
 
 	public void registerNewOrganization() {

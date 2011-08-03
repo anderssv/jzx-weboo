@@ -18,7 +18,7 @@
 			<form:input path="organizationNumberSearch" />
 			<input type="submit" value="Lookup" name="lookup" id="lookup" />
 		</c:if>
-		<c:if test="${organizationForm.searchPerformed}">
+		<c:if test="${organizationForm.shouldShowOrganization}">
 			<label>Organization number:</label>
 			<form:hidden path="organization.organizationNumber"/>
 			<c:out value="${organizationForm.organization.organizationNumber}" />

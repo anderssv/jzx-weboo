@@ -98,9 +98,8 @@ public abstract class AbstractWebTest {
 			boolean allowExistingOrganization) {
 		OrganizationRegistrationPage orgPage = organizationPage();
 
-		orgPage.fillIn(request.getOrganization().getOrganizationNumber());
-		orgPage.lookup();
-
+		orgPage.lookupOrganization(request.getOrganization().getOrganizationNumber());
+		System.out.println(getDriver().getPageSource());
 		if (orgPage.hitOnLookup()) {
 			orgPage.assertOrganisationName(request.getOrganization().getName());
 		} else {

@@ -90,7 +90,7 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params = "lookup")
-	public String lookupOrganisationName(@ModelAttribute OrganizationForm organizationForm, @ModelAttribute InformationRequest informationRequest, Errors errors) {
+	public String lookupOrganisationName(@Valid @ModelAttribute OrganizationForm organizationForm, Errors errors, @ModelAttribute InformationRequest informationRequest) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
 		}
@@ -106,7 +106,7 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params = "save")
-	public String registerNewOrganization(@ModelAttribute OrganizationForm organizationForm, @Valid @ModelAttribute InformationRequest informationRequest, Errors errors, SessionStatus status) {
+	public String registerNewOrganization(@ModelAttribute OrganizationForm organizationForm, Errors errors, @ModelAttribute InformationRequest informationRequest, SessionStatus status) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
 		}
