@@ -1,5 +1,6 @@
 package no.f12.jzx.weboo.web.view;
 
+import static org.junit.Assert.*;
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.domain.InformationRequestBuilder;
 import no.f12.jzx.weboo.test.InformationRequestDataProvider;
@@ -21,7 +22,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		OrganizationRegistrationPage organizationRegistrationPage = registerRequestInformation(request);
 		organizationRegistrationPage.lookupOrganization(request.getOrganization().getOrganizationNumber());
 		organizationRegistrationPage.assertErrors();
-		
+		assertTrue(organizationRegistrationPage.getErrors().getText().contains("Ugyldig"));
 	}
 	
 	@Test

@@ -56,4 +56,5 @@ public class OrganizationRegistrationPage extends AbstractPage {
 		return !name.getValue().isEmpty();
 	}
 
+
 }

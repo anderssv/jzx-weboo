@@ -51,14 +51,13 @@ public class InformationRequestController {
 
 		return VIEW_INFORMATION_REQUEST_LIST;
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value="slowest")
+
+	@RequestMapping(method = RequestMethod.GET, value = "slowest")
 	public String listSlowestRequests(Model model) {
 		model.addAttribute("requests", this.orgRepo.getSlowestRequests(10));
-		
+
 		return VIEW_INFORMATION_REQUEST_LIST;
 	}
-	
 
 	@RequestMapping(method = RequestMethod.GET, value = URL_NEW)
 	public String showNewRegistrationForm(Model model) {
@@ -85,12 +84,14 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.GET)
-	public String showOrganizationInput(@ModelAttribute OrganizationForm organizationForm, @ModelAttribute InformationRequest informationRequest) {
+	public String showOrganizationInput(@ModelAttribute OrganizationForm organizationForm,
+			@ModelAttribute InformationRequest informationRequest) {
 		return VIEW_ORGANIZATION_FORM;
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params = "lookup")
-	public String lookupOrganisationName(@Valid @ModelAttribute OrganizationForm organizationForm, Errors errors, @ModelAttribute InformationRequest informationRequest) {
+	public String lookupOrganisationName(@Valid @ModelAttribute OrganizationForm organizationForm, Errors errors,
+			@ModelAttribute InformationRequest informationRequest) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
 		}
@@ -98,7 +99,7 @@ public class InformationRequestController {
 		if (org != null) {
 			informationRequest.setOrganization(org);
 			organizationForm.setOrganization(org);
-		}else{
+		} else {
 			organizationForm.registerNewOrganization();
 		}
 
@@ -106,7 +107,8 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(value = URL_ORGANIZATION, method = RequestMethod.POST, params = "save")
-	public String registerNewOrganization(@ModelAttribute OrganizationForm organizationForm, Errors errors, @ModelAttribute InformationRequest informationRequest, SessionStatus status) {
+	public String registerNewOrganization(@ModelAttribute OrganizationForm organizationForm, Errors errors,
+			@ModelAttribute InformationRequest informationRequest, SessionStatus status) {
 		if (errors.hasErrors()) {
 			return VIEW_ORGANIZATION_FORM;
 		}
@@ -116,9 +118,9 @@ public class InformationRequestController {
 		status.setComplete();
 		return redirectTo(url(URL_INFORMATION_REQUEST, Long.toString(informationRequest.getId()), URL_CONFIRMATION));
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "{requestId}/" + URL_RECEIVED)
-	public String registerRequestAsReceived(@PathVariable Long requestId){
+	public String registerRequestAsReceived(@PathVariable Long requestId) {
 		InformationRequest informationRequest = this.orgRepo.getInformationRequest(requestId);
 		informationRequest.received();
 		return redirectTo(url("/", URL_INFORMATION_REQUEST));

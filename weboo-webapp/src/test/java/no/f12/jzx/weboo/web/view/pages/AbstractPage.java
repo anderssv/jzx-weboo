@@ -6,6 +6,7 @@ import junit.framework.Assert;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public abstract class AbstractPage {
 
@@ -27,7 +28,11 @@ public abstract class AbstractPage {
 	}
 
 	public void assertErrors() {
-		assertNotNull(getDriver().findElement(By.id("errors")));
+		assertNotNull(getErrors());
+	}
+
+	public WebElement getErrors() {
+		return getDriver().findElement(By.id("errors"));
 	}
 
 	public String getApplicationUrl() {
