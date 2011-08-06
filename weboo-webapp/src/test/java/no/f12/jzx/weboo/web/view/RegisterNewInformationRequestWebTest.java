@@ -15,8 +15,9 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 	@Test
 	public void shouldNotValidateWhenNotValidOrganizationNumber() throws Exception {
 		InformationRequestBuilder builder = InformationRequestDataProvider.defaultInformationRequest();
-		builder.getOrganization().withOrganizationNumber(OrganizationDataProvider.createInvalidOrganizationNumber());
+		builder.getOrganization().organizationNumber(OrganizationDataProvider.createInvalidOrganizationNumber());
 		InformationRequest request = builder.build();
+		
 		OrganizationRegistrationPage organizationRegistrationPage = registerRequestInformation(request);
 		organizationRegistrationPage.lookupOrganization(request.getOrganization().getOrganizationNumber());
 		organizationRegistrationPage.assertErrors();

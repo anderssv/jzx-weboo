@@ -45,7 +45,6 @@ public class OrganizationRegistrationPage extends AbstractPage {
 	public void lookupOrganization(OrganizationNumber organizationNumberSearch){
 		this.organizationNumberSearch.sendKeys(organizationNumberSearch.getValue());
 		lookup.click();
-		
 	}
 
 	public void assertOrganisationName(String name) {

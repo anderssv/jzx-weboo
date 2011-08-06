@@ -69,7 +69,7 @@ public class InformationRequestController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String registerRequestInformation(@ModelAttribute InformationRequest informationRequest, Errors errors) {
+	public String registerRequestInformation(@Valid @ModelAttribute InformationRequest informationRequest, Errors errors) {
 		if (errors.hasErrors()) {
 			return VIEW_INFORMATION_REQUEST_FORM;
 		}
