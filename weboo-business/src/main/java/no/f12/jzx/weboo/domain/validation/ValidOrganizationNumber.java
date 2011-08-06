@@ -10,7 +10,7 @@ import javax.validation.Payload;
 
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = ValueObjectValidator.class)
+@Constraint(validatedBy = OrganizationNumberValidator.class)
 public @interface ValidOrganizationNumber {
 
 	String message() default "{no.f12.jzx.weboo.invalid.organizationNumber}";

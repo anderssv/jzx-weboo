@@ -4,6 +4,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 
 import no.f12.jzx.weboo.domain.validation.NotBlank;
+import no.f12.jzx.weboo.domain.validation.ValidOrganizationNumber;
 import no.f12.jzx.weboo.domain.validation.WeightedCrcNumberValidator;
 
 public class OrganizationNumber implements ValueObject {
@@ -11,6 +12,7 @@ public class OrganizationNumber implements ValueObject {
 	@NotBlank
 	@Digits(integer=9, fraction=0)
 	@Min(value=100000000)
+	@ValidOrganizationNumber
 	private String value;
 
 	public OrganizationNumber(String orgNum) {
@@ -22,7 +24,7 @@ public class OrganizationNumber implements ValueObject {
 	}
 
 	public boolean isValid() {
-		return WeightedCrcNumberValidator.isValid(this);
+		return WeightedCrcNumberValidator.isValid(this.getValue());
 	}
 
 	@Override
