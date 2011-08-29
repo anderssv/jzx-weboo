@@ -28,8 +28,8 @@ public class InformationRequestBuilder implements Builder<InformationRequest> {
 		return this;
 	}
 
-	public InformationRequestBuilder organization(OrganizationBuilder createDefaultOrganization) {
-		this.orgBuilder = createDefaultOrganization;
+	public InformationRequestBuilder organization(OrganizationBuilder organization) {
+		this.orgBuilder = organization;
 		return this;
 	}
 
