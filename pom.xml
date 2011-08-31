@@ -102,7 +102,7 @@
 				<groupId>no.f12.jzx.weboo</groupId>
 				<artifactId>weboo-jettyserver</artifactId>
 				<version>${project.version}</version>
-				<scope>runtime</scope>
+				<scope>compile</scope>
 			</dependency>
 
 			<dependency>

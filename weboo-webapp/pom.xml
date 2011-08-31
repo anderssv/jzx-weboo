@@ -44,7 +44,6 @@
 		<dependency>
 			<groupId>no.f12.jzx.weboo</groupId>
 			<artifactId>weboo-jettyserver</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>no.f12.jzx.weboo</groupId>
