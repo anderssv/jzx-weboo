@@ -8,10 +8,12 @@
 <!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<c:url value="/" var="contextRoot" />
 <head>
 
 	<title><decorator:title /></title>
-	<style type="text/css">@import "/myapp/resources/css/style.css";</style>
+	<style type="text/css">@import "${contextRoot}/resources/css/style.css";</style>
 	<decorator:head />	
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -22,8 +24,8 @@
 
     <!-- All JavaScript at the bottom, except for Modernizr and Respond.
     	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries -->
-    <script src="/myapp/resources/resources/js/modernizr-1.7.min.js"></script>
-    <script src="/myapp/resources/js/respond.min.js"></script>
+    <script src="${contextRoot}/resources/resources/js/modernizr-1.7.min.js"></script>
+    <script src="${contextRoot}/resources/js/respond.min.js"></script>
 </head>
 <body>
 
@@ -32,7 +34,7 @@
     <header id="header" class="clearfix" role="banner">
     
         <hgroup>
-            <h1 id="site-title"><a href="/myapp/informationRequest">Få se mappa mi!</a></h1>
+            <h1 id="site-title"><a href="${contextRoot}/informationRequest">Få se mappa mi!</a></h1>
             <h2 id="site-description">The response time battle of our ISPs</h2>
         </hgroup>
     
@@ -43,9 +45,9 @@
     <!-- Navigation -->
     <nav id="menu" class="clearfix" role="navigation">
         <ul> 
-            <li><a href="/myapp/informationRequest">Home</a></li>
+            <li><a href="${contextRoot}/informationRequest">Home</a></li>
             <li class="current">
-                <a href="/myapp/informationRequest/new">New ticket</a>
+                <a href="${contextRoot}/informationRequest/new">New ticket</a>
                 <ul>
                     <li><a href="#">Subpage</a></li>
                     <li><a href="#">Subpage 2</a></li>
@@ -76,7 +78,7 @@
 
 	<!-- JavaScript at the bottom for fast page loading -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-    <script src="/myapp/resources//js/script.js"></script>
+    <script src="${contextRoot}/resources//js/script.js"></script>
 
 </body>
 </html>
