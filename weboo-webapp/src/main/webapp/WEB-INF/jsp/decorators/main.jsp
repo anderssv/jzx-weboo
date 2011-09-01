@@ -9,7 +9,8 @@
 <!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
-<c:url value="/" var="contextRoot" />
+<c:set value="${pageContext.request.contextPath}" var="contextRoot" />
+
 <head>
 
 	<title><decorator:title /></title>
