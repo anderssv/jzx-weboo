@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>no.f12.jzx.weboo</groupId>
 	<artifactId>weboo-webapp</artifactId>
-	<name>weboo-jetty-webapp</name>
+	<name>weboo-webapp</name>
 
 	<build>
 		<plugins>

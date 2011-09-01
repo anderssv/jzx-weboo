@@ -9,7 +9,7 @@
 	<groupId>no.f12.jzx.weboo</groupId>
 	<artifactId>weboo-jettyserver</artifactId>
 	<packaging>jar</packaging>
-	<name>weboo-jetty-jettyserver</name>
+	<name>weboo-jettyserver</name>
 
 	<dependencies> 
 		<dependency>
