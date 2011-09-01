@@ -9,6 +9,6 @@ public class Server {
 	    public static void main(String[] args) throws Exception{
 	    	System.out.println("Starting server...");
 			WebServer setupServer = new WebServer(Integer.valueOf(System.getenv("PORT")));
-			setupServer.start(new File("./weboo-webapp/src/main/webapp"), "");
+			setupServer.start(new File("."), "");
 	    }
 }
