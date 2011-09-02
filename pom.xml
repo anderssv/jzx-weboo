@@ -10,9 +10,9 @@
 	<name>weboo</name>
 
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
-		<version.jetty>7.2.2.v20101205</version.jetty>
-		<version.glassfish-jsp-2_1>2.1.v20100127</version.glassfish-jsp-2_1>
+		<spring.version>3.0.6.RELEASE</spring.version>
+		<version.jetty>8.0.0.v20110901</version.jetty>
+		<version.glassfish-jsp-2_1>9.1.1.B60.25.p2</version.glassfish-jsp-2_1>
 		<version.webdriver>0.9.7376</version.webdriver>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
