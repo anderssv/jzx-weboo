@@ -40,10 +40,6 @@
 
 	<dependencies>
 		<dependency>
-			<artifactId>mockito-all</artifactId>
-			<groupId>org.mockito</groupId>
-		</dependency>
-		<dependency>
 			<artifactId>spring-test</artifactId>
 			<groupId>org.springframework</groupId>
 		</dependency>
