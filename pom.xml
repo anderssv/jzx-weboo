@@ -40,10 +40,6 @@
 
 	<dependencies>
 		<dependency>
-			<artifactId>spring-test</artifactId>
-			<groupId>org.springframework</groupId>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
