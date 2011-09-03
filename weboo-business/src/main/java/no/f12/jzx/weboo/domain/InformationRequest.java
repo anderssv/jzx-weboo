@@ -43,7 +43,7 @@ public class InformationRequest {
 		this.id = id;
 	}
 
-	public void received() {
+	public void close() {
 		received = true;
 	}
 

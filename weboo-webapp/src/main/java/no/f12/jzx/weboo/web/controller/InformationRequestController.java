@@ -122,7 +122,7 @@ public class InformationRequestController {
 	@RequestMapping(method = RequestMethod.GET, value = "{requestId}/" + URL_RECEIVED)
 	public String registerRequestAsReceived(@PathVariable Long requestId) {
 		InformationRequest informationRequest = this.orgRepo.getInformationRequest(requestId);
-		informationRequest.received();
+		informationRequest.close();
 		return redirectTo(url("/", URL_INFORMATION_REQUEST));
 	}
 
