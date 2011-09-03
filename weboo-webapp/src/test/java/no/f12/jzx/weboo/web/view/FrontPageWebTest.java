@@ -8,7 +8,7 @@ public class FrontPageWebTest extends AbstractWebTest {
 
 	@Test
 	public void shouldApplySitemeshDecorator() {
-		InformationRequestPage informationRequestPage = informationRequestPage();
+		InformationRequestPage informationRequestPage = pageInformationRequest();
 		informationRequestPage.goTo();
 		informationRequestPage.assertText("Sitemesh decorator");
 	}

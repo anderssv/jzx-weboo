@@ -123,7 +123,7 @@ public class InformationRequestController {
 	public String registerRequestAsReceived(@PathVariable Long requestId) {
 		InformationRequest informationRequest = this.orgRepo.getInformationRequest(requestId);
 		informationRequest.close();
-		return redirectTo(url("/", URL_INFORMATION_REQUEST));
+		return redirectTo(url(URL_INFORMATION_REQUEST));
 	}
 
 	public void setOrganizationRepository(InformationRequestRepository orgRepo) {

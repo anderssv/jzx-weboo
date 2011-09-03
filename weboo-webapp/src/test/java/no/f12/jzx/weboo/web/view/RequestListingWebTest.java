@@ -14,7 +14,7 @@ public class RequestListingWebTest extends AbstractWebTest {
 
 	@Test
 	public void shouldShowIssueSummaryItems() throws Exception {
-		ListRequestsPage listRequestsPage = listRequestsPage();
+		ListRequestsPage listRequestsPage = pageListRequests();
 
 		InformationRequest informationRequest = InformationRequestDataProvider.defaultInformationRequest().build();
 		Long requestId = registerRequest(informationRequest);
@@ -33,7 +33,7 @@ public class RequestListingWebTest extends AbstractWebTest {
 	public void shouldBeAbleToMarkCorrectRequestAsReceivedWhenMultipleRequests() throws Exception {
 		List<InformationRequest> requests = createRequests(5);
 
-		ListRequestsPage listRequestsPage = listRequestsPage();
+		ListRequestsPage listRequestsPage = pageListRequests();
 		listRequestsPage.goTo();
 		listRequestsPage.assertAt();
 
@@ -48,7 +48,7 @@ public class RequestListingWebTest extends AbstractWebTest {
 	public void shouldListSlowestTests() {
 		createRequests(1);
 
-		ListRequestsPage listRequestsPage = listRequestsPage();
+		ListRequestsPage listRequestsPage = pageListRequests();
 		listRequestsPage.goTo();
 		listRequestsPage.clickSlowestLink();
 		listRequestsPage.assertAt();

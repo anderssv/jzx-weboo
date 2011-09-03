@@ -58,24 +58,24 @@ public abstract class AbstractWebTest {
 		return this.driver;
 	}
 
-	protected OrganizationRegistrationPage organizationPage() {
+	protected OrganizationRegistrationPage pageOrganization() {
 		OrganizationRegistrationPage organizationRegistrationPage = new OrganizationRegistrationPage(getDriver(),
 				getApplicationUrl());
 		return initializePage(organizationRegistrationPage);
 	}
 
-	protected InformationRequestSummaryPage requestSummaryPage() {
+	protected InformationRequestSummaryPage pageRequestSummary() {
 		InformationRequestSummaryPage informationRequestSummaryPage = new InformationRequestSummaryPage(getDriver(),
 				getApplicationUrl());
 		return initializePage(informationRequestSummaryPage);
 	}
 
-	protected InformationRequestPage informationRequestPage() {
+	protected InformationRequestPage pageInformationRequest() {
 		InformationRequestPage informationRequestPage = new InformationRequestPage(getDriver(), getApplicationUrl());
 		return initializePage(informationRequestPage);
 	}
 
-	protected ListRequestsPage listRequestsPage() {
+	protected ListRequestsPage pageListRequests() {
 		ListRequestsPage listRequestsPage = new ListRequestsPage(getDriver(), getApplicationUrl());
 		return initializePage(listRequestsPage);
 	}
@@ -88,7 +88,7 @@ public abstract class AbstractWebTest {
 
 	protected InformationRequestSummaryPage registerOrganization(InformationRequest request,
 			boolean allowExistingOrganization) {
-		OrganizationRegistrationPage orgPage = organizationPage();
+		OrganizationRegistrationPage orgPage = pageOrganization();
 
 		orgPage.lookupOrganization(request.getOrganization().getOrganizationNumber());
 		if (orgPage.hitOnLookup()) {
@@ -99,13 +99,13 @@ public abstract class AbstractWebTest {
 
 		orgPage.submit();
 
-		InformationRequestSummaryPage informationRequestSummaryPage = requestSummaryPage();
+		InformationRequestSummaryPage informationRequestSummaryPage = pageRequestSummary();
 		informationRequestSummaryPage.assertAt();
 		return informationRequestSummaryPage;
 	}
 
 	protected OrganizationRegistrationPage registerRequestInformation(InformationRequest request) {
-		InformationRequestPage requestPage = informationRequestPage();
+		InformationRequestPage requestPage = pageInformationRequest();
 
 		requestPage.goTo();
 		requestPage.assertAt();
@@ -113,7 +113,7 @@ public abstract class AbstractWebTest {
 		requestPage.fillIn(request);
 		requestPage.submit();
 
-		OrganizationRegistrationPage orgPage = organizationPage();
+		OrganizationRegistrationPage orgPage = pageOrganization();
 		orgPage.assertAt();
 		return orgPage;
 	}
@@ -123,6 +123,9 @@ public abstract class AbstractWebTest {
 		InformationRequestSummaryPage informationRequestSummaryPage = registerOrganization(request, false);
 
 		informationRequestSummaryPage.assertAt();
-		return informationRequestSummaryPage.getRegisteredRequestIdentifier();
+		Long requestId = informationRequestSummaryPage.getRegisteredRequestIdentifier();
+		request.setId(requestId);
+
+		return requestId;
 	}
 }
