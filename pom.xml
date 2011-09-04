@@ -91,13 +91,6 @@
 
 
 			<dependency>
-				<groupId>no.f12.jzx.weboo</groupId>
-				<artifactId>weboo-jettyserver</artifactId>
-				<version>${project.version}</version>
-				<scope>compile</scope>
-			</dependency>
-
-			<dependency>
 				<artifactId>mockito-all</artifactId>
 				<groupId>org.mockito</groupId>
 				<version>1.9.0-rc1</version>
@@ -228,7 +221,6 @@
 
 	<modules>
 		<module>weboo-webapp</module>
-		<module>weboo-jettyserver</module>
 		<module>weboo-business</module>
 	</modules>
 </project>

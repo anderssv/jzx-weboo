@@ -28,7 +28,7 @@
 							<generateRepository>false</generateRepository>
 							<programs>
 								<program>
-									<mainClass>no.f12.jzx.weboo.Server</mainClass>
+									<mainClass>no.f12.jzx.weboo.server.Server</mainClass>
 									<name>webapp</name>
 								</program>
 							</programs>
@@ -40,10 +40,6 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>no.f12.jzx.weboo</groupId>
-			<artifactId>weboo-jettyserver</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>no.f12.jzx.weboo</groupId>
 			<artifactId>weboo-business</artifactId>
