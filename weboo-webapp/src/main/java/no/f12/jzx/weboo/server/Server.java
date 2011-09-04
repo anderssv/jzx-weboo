@@ -16,6 +16,7 @@ public class Server {
 	private static File determineContextPath() {
 		File contextPath = new File("./src/main/webapp");
 		File herokuPath = new File("./weboo-webapp/src/main/webapp");
+
 		if (herokuPath.exists()) {
 			return herokuPath;
 		}
