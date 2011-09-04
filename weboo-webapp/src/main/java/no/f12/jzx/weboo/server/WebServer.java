@@ -29,7 +29,7 @@ public class WebServer {
 
 	private Server startWebServer(File webAppContextPath, String applicationContext) {
 		Assert.isTrue(webAppContextPath.exists(), "The context path you have specified does not exist");
-		Assert.notNull(applicationContext, "You must specify the context path of the application");
+		Assert.notNull(applicationContext, "You must specify the context path of the application: " + webAppContextPath);
 
 		int startPort = 0;
 		if (this.port != null) {
