@@ -1,4 +1,4 @@
-package no.f12.jzx.weboo.jetty;
+package no.f12.jzx.weboo.server;
 
 import java.io.File;
 

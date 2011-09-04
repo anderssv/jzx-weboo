@@ -3,7 +3,7 @@ package no.f12.jzx.weboo.web.view;
 import java.io.File;
 
 import no.f12.jzx.weboo.domain.InformationRequest;
-import no.f12.jzx.weboo.jetty.WebServer;
+import no.f12.jzx.weboo.server.WebServer;
 import no.f12.jzx.weboo.web.view.pages.AbstractPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestPage;
 import no.f12.jzx.weboo.web.view.pages.InformationRequestSummaryPage;

@@ -2,7 +2,7 @@ package no.f12.jzx.weboo;
 
 import java.io.File;
 
-import no.f12.jzx.weboo.jetty.WebServer;
+import no.f12.jzx.weboo.server.WebServer;
 
 public class Server {
 

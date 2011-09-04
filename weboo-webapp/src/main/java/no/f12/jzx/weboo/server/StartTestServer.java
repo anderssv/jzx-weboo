@@ -1,8 +1,7 @@
-package no.f12.jzx.weboo.jettyapp;
+package no.f12.jzx.weboo.server;
 
 import java.io.File;
 
-import no.f12.jzx.weboo.jetty.WebServer;
 
 /**
  * Starts a server pointing to a directory with hot-deploy
