@@ -73,7 +73,7 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 	}
 
 	@Test
-	public void shouldAvoidDoubleSlashesOnRedirects() {
+	public void shouldAvoidTripleSlashesOnRedirects() {
 		InformationRequest request = InformationRequestDataProvider.defaultInformationRequest().build();
 
 		registerRequest(request);
