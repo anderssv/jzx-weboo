@@ -59,11 +59,8 @@ public class RegisterNewInformationRequestWebTest extends AbstractWebTest {
 		InformationRequest request2 = InformationRequestDataProvider.defaultInformationRequest().title("Request1")
 				.build();
 
-		Long requestId1 = registerRequest(request1);
-		Long requestId2 = registerRequest(request2);
-
-		request1.setId(requestId1);
-		request2.setId(requestId2);
+		registerRequest(request1);
+		registerRequest(request2);
 
 		ListRequestsPage listPage = pageListRequests();
 		listPage.goTo();
