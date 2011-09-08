@@ -32,7 +32,7 @@ public abstract class AbstractWebTest {
 		System.setProperty("customProperties", "classpath:spring/test/system.properties");
 
 		// Start server
-		if (server == null) {
+		if (getUrlParameter() == null && server == null) {
 			WebServer setupServer = new WebServer();
 			setupServer.start(new File(WEBAPP_PATH), APPCONTEXT);
 			server = setupServer;
@@ -50,13 +50,16 @@ public abstract class AbstractWebTest {
 	}
 
 	protected String getApplicationUrl() {
-		String applicationUrl = "http://localhost:" + server.getPort() + "/" + APPCONTEXT + "/";
-		String systemUrl = System.getProperty("test.url");
+		String systemUrl = getUrlParameter();
 
 		if (systemUrl != null) {
 			return systemUrl;
 		}
-		return applicationUrl;
+		return "http://localhost:" + server.getPort() + "/" + APPCONTEXT;
+	}
+
+	private static String getUrlParameter() {
+		return System.getProperty("test.url");
 	}
 
 	protected WebDriver getDriver() {
