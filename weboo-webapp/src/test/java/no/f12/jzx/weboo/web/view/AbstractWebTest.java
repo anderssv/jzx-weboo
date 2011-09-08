@@ -51,6 +51,11 @@ public abstract class AbstractWebTest {
 
 	protected String getApplicationUrl() {
 		String applicationUrl = "http://localhost:" + server.getPort() + "/" + APPCONTEXT + "/";
+		String systemUrl = System.getProperty("test.url");
+
+		if (systemUrl != null) {
+			return systemUrl;
+		}
 		return applicationUrl;
 	}
 
