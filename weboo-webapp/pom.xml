@@ -28,7 +28,7 @@
 							<generateRepository>false</generateRepository>
 							<programs>
 								<program>
-									<mainClass>no.f12.jzx.weboo.server.Server</mainClass>
+									<mainClass>no.f12.jzx.weboo.server.WebServer</mainClass>
 									<name>webapp</name>
 								</program>
 							</programs>
