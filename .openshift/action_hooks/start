@@ -10,4 +10,5 @@ env
 
 cd $OPENSHIFT_REPO_DIR
 mvn clean install -Dmaven.test.skip=true
-sh weboo-webapp/bin/webapp
+nohup sh weboo-webapp/bin/webapp > $OPENSHIFT_HOMEDIR/logs/server.log 2>&1 &
+
