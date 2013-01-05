@@ -6,3 +6,4 @@
 
 cd $OPENSHIFT_REPO_DIR
 mvn clean install -Dmaven.test.skip=true
+sh weboo-webapp/target/bin/webapp
