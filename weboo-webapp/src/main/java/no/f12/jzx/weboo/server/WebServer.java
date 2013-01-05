@@ -1,6 +1,7 @@
 package no.f12.jzx.weboo.server;
 
 import java.io.File;
+import java.net.InetSocketAddress;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -28,7 +29,8 @@ public class WebServer {
 	}
 
 	private Server startWebServer(File webAppContextPath, String applicationContext) {
-		Assert.isTrue(webAppContextPath.exists(), "The context path you have specified does not exist: " + webAppContextPath);
+		Assert.isTrue(webAppContextPath.exists(), "The context path you have specified does not exist: "
+				+ webAppContextPath);
 		Assert.notNull(applicationContext, "You must specify the context path of the application");
 
 		int startPort = 0;
@@ -40,7 +42,7 @@ public class WebServer {
 			applicationContext = "/" + applicationContext;
 		}
 
-		Server server = new Server(startPort);
+		Server server = createServer(startPort);
 		try {
 			WebAppContext webAppContext = new WebAppContext(webAppContextPath.getCanonicalPath(), applicationContext);
 			setUpClassPath(webAppContext);
@@ -50,6 +52,14 @@ public class WebServer {
 			throw new RuntimeException(e);
 		}
 		return server;
+	}
+
+	private Server createServer(int startPort) {
+		if (System.getenv("OPENSHIFT_INTERNAL_IP") != null) {
+			return new Server(new InetSocketAddress(System.getenv("OPENSHIFT_INTERNAL_IP"), port));
+		} else {
+			return new Server(startPort);
+		}
 	}
 
 	private void setUpClassPath(WebAppContext webAppContext) {
@@ -73,7 +83,7 @@ public class WebServer {
 			throw new RuntimeException(e);
 		}
 	}
-	
+
 	public static void main(String[] args) throws Exception {
 		int port = determineServerPort();
 		File contextPath = determineContextPath();
@@ -100,6 +110,5 @@ public class WebServer {
 		}
 		return port;
 	}
-
 
 }
