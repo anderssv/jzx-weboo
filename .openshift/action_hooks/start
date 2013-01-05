@@ -6,6 +6,8 @@
 
 export REPO=$OPENSHIFT_REPO_DIR/.m2/repository
 
+env
+
 cd $OPENSHIFT_REPO_DIR
 mvn clean install -Dmaven.test.skip=true
 sh weboo-webapp/bin/webapp
