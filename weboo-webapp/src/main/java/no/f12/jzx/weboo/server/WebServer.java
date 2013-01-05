@@ -55,6 +55,9 @@ public class WebServer {
 	}
 
 	private Server createServer(int startPort) {
+		// OpenShift requires that we bind to an internal IP, this is not the case
+		// most other places and I guess that Heroku avoids this by handing us a specific
+		// port. On OpenShift the port is always 8080. 
 		if (System.getenv("OPENSHIFT_INTERNAL_IP") != null) {
 			return new Server(new InetSocketAddress(System.getenv("OPENSHIFT_INTERNAL_IP"), port));
 		} else {
