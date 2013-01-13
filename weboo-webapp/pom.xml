@@ -133,7 +133,6 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>appassembler-maven-plugin</artifactId>
-						<version>1.2.2</version>
 						<executions>
 							<execution>
 								<phase>package</phase>
@@ -141,14 +140,7 @@
 									<goal>assemble</goal>
 								</goals>
 								<configuration>
-									<assembleDirectory>target</assembleDirectory>
 									<generateRepository>true</generateRepository>
-									<programs>
-										<program>
-											<mainClass>no.f12.jzx.weboo.server.WebServer</mainClass>
-											<name>webapp</name>
-										</program>
-									</programs>
 								</configuration>
 							</execution>
 						</executions>
