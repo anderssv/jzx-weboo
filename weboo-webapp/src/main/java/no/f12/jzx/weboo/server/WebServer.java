@@ -112,7 +112,7 @@ public class WebServer {
 		String[] portNames = new String[] { "VCAP_APP_PORT", "PORT" };
 		for (String portName : portNames) {
 			String portValue = System.getenv(portName);
-			if (portValue != null) {
+			if (portValue != null && !portValue.equals("")) {
 				return Integer.valueOf(portValue);
 			}
 		}
