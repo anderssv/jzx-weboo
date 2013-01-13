@@ -36,6 +36,18 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.cloudfoundry</groupId>
+				<artifactId>cf-maven-plugin</artifactId>
+				<version>1.0.0.M2</version>
+				<configuration>
+					<command>bin/webapp</command>
+					<framework>standalone</framework>
+					<memory>256</memory>
+					<path>target/appassembler</path>
+					<target>http://api.cloudfoundry.com</target>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

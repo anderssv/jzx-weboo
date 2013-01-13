@@ -55,9 +55,10 @@ public class WebServer {
 	}
 
 	private Server createServer(int startPort) {
-		// OpenShift requires that we bind to an internal IP, this is not the case
-		// most other places and I guess that Heroku avoids this by handing us a specific
-		// port. On OpenShift the port is always 8080. 
+		/* OpenShift requires that we bind to an internal IP, this is not the
+		 * case most other places and I guess that Heroku avoids this by handing
+		 * us a specific port. On OpenShift the port is always 8080.
+		 */
 		if (System.getenv("OPENSHIFT_INTERNAL_IP") != null) {
 			return new Server(new InetSocketAddress(System.getenv("OPENSHIFT_INTERNAL_IP"), port));
 		} else {
@@ -106,12 +107,18 @@ public class WebServer {
 	}
 
 	private static int determineServerPort() {
-		int port = 8080;
-		String systemPort = System.getenv("PORT");
-		if (systemPort != null) {
-			port = Integer.valueOf(systemPort);
+		// Ports to check, most specific first. VCAP is Cloud Foundry, PORT is
+		// Heroku
+		String[] portNames = new String[] { "VCAP_APP_PORT", "PORT" };
+		for (String portName : portNames) {
+			String portValue = System.getenv(portName);
+			if (portValue != null) {
+				return Integer.valueOf(portValue);
+			}
 		}
-		return port;
+
+		// If nothing found, default to 8080
+		return 8080;
 	}
 
 }
