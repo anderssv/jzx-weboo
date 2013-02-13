@@ -55,14 +55,14 @@
 				<artifactId>cf-maven-plugin</artifactId>
 				<version>1.0.0.M4</version>
 				<configuration>
+					<target>http://api.cloudfoundry.com</target>
+					<url>mappami.cloudfoundry.com</url>
 					<server>cloudfoundry</server>
 					<appname>mappami</appname>
-					<url>mappami.cloudfoundry.com</url>
 					<command>target/bin/webapp</command>
 					<framework>standalone</framework>
 					<memory>256</memory>
 					<path>.</path>
-					<target>http://api.cloudfoundry.com</target>
 					<runtime>java</runtime>
 					<instances>2</instances>
 				</configuration>
