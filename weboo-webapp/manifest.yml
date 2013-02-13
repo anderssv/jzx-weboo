@@ -1,0 +1,16 @@
+# Test setup for local VCAP deploy
+--- 
+applications: 
+  .: 
+    name: test
+    framework: 
+      name: standalone
+      info: 
+        mem: 64M
+        description: Standalone Application
+        exec: 
+    runtime: java
+    command: target/bin/webapp
+    url: test.vcap.me
+    mem: 512M
+    instances: 1
