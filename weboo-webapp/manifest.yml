@@ -2,7 +2,7 @@
 --- 
 applications: 
   .: 
-    name: test
+    name: mappami
     framework: 
       name: standalone
       info: 
