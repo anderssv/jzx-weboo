@@ -11,6 +11,6 @@ applications:
         exec: 
     runtime: java
     command: target/bin/webapp
-    url: test.vcap.me
+    url: app1.vcap.me
     mem: 512M
     instances: 1
