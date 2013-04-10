@@ -1,0 +1,24 @@
+# Test setup for deploying to CloudFoundry
+#
+# To enable building this application add a profile to the maven
+# build like this:
+#                    mvn -Pcloudfoundry clean install
+#
+# Then deploy:
+#                    vmc push
+#
+--- 
+applications: 
+  .: 
+    name: mappami
+    framework: 
+      name: standalone
+      info: 
+        mem: 64M
+        description: Standalone Application
+        exec: 
+    runtime: java
+    command: weboo-webapp/target/bin/webapp
+    url: mappami.${target-base}
+    mem: 512M
+    instances: 1
