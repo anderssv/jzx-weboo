@@ -7,6 +7,6 @@
 export REPO=$OPENSHIFT_HOMEDIR/.m2/repository
 
 cd $OPENSHIFT_REPO_DIR
-mvn clean install -Dmaven.test.skip=true
+mvn clean install -DskipTests
 nohup sh weboo-webapp/target/bin/webapp > $OPENSHIFT_HOMEDIR/diy-0.1/logs/server.log 2>&1 &
 
