@@ -35,7 +35,7 @@
     <header id="header" class="clearfix" role="banner">
     
         <hgroup>
-            <h1 id="site-title"><a href="${contextRoot}/informationRequest">Få se mappa mi!</a></h1>
+            <h1 id="site-title"><a href="${contextRoot}/informationRequest">Helloo MAG!</a></h1>
             <h2 id="site-description">The response time battle of our ISPs</h2>
         </hgroup>
     
