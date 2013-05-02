@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nohup sh weboo-webapp/target/bin/webapp > server.log 2>&1 &
