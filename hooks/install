@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eux # -x for verbose logging to juju debug-log
+juju-log "Installing drush,apache2,php via apt-get"
+apt-get -y install maven2 sun-java6-jdk
+juju-log "Using drush to download latest Drupal"
+
+mvn clean install
+
