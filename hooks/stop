@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -eux
+
+juju-log "Stopping application Mappami"
+set +e
+PROCESS_PID=$(pgrep -f weboo)
+set -e
+if [[ -n $PROCESS_PID ]]; then
+  kill $PROCESS_PID
+  juju-log "Application with $PROCESS_PID stopped"
+fi
