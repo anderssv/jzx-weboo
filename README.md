@@ -19,3 +19,15 @@ $ vmc push
 ```
 
 Edit the manifest.yml file in the weboo-webapp directory to change URL and other stuff.
+
+# Juju
+
+Do setup
+
+```
+$ juju bootstrap
+$ juju deploy local:mappami
+$ juju expose mappami
+```
+
+
