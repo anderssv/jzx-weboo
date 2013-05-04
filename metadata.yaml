@@ -4,5 +4,5 @@ maintainer: "anders@f12.no"
 description: |
     Mappami
 provides:
-    webapp:
+    website:
         interface: http
