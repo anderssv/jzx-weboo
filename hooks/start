@@ -2,13 +2,10 @@
 
 set -eux
 
-juju-log "Installing Java and Maven2 via apt-get"
-apt-get -y install maven2 default-jdk
-
 juju-log "Building application with Maven2 from $(pwd)"
 
 ./hooks/stop
-mvn --batch-mode clean install -Pcloudfoundry -DskipTests
+mvn --batch-mode install -Pcloudfoundry -DskipTests
 
 juju-log "Starting application in $(pwd)"
 nohup sh weboo-webapp/target/bin/webapp > server.log 2>&1 &
