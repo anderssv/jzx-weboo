@@ -3,3 +3,6 @@ summary: "Mappa Mi"
 maintainer: "anders@f12.no"
 description: |
     Mappami
+provides:
+	website:
+		interface: http
