@@ -1,1 +1,15 @@
 box: wercker/android
+# Build definition
+build:
+  # The steps that will be executed on build
+  steps:
+    - script:
+        name: show base information
+        code: |
+          echo $JAVA_HOME
+          echo $MAVEN_HOME
+          mvn -v
+    - script:
+        name: build
+        code: |
+          mvn clean install
