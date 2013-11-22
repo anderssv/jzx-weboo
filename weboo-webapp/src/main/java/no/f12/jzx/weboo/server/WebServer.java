@@ -60,7 +60,7 @@ public class WebServer {
 		 * us a specific port. On OpenShift the port is always 8080.
 		 */
 		if (System.getenv("OPENSHIFT_DIY_IP") != null) {
-			return new Server(new InetSocketAddress(System.getenv("OPENSHIFT_INTERNAL_IP"), port));
+			return new Server(new InetSocketAddress(System.getenv("OPENSHIFT_DIY_IP"), port));
 		} else {
 			return new Server(startPort);
 		}
