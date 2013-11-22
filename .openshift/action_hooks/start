@@ -6,7 +6,7 @@
 
 env
 
-export REPO=$OPENSHIFT_HOMEDIR/.m2/repository
+export REPO=$OPENSHIFT_BUILD_DEPENDENCIES_DIR/maven-repository
 
 cd $OPENSHIFT_REPO_DIR
 mvn clean install -DskipTests
