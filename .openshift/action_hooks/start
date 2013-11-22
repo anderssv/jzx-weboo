@@ -11,6 +11,7 @@ LOG_DIR=$OPENSHIFT_HOMEDIR/diy/logs
 export MAVEN_OPTS="-Dmaven.repo.local=$MAVEN_REPO"
 
 cd $OPENSHIFT_REPO_DIR
-mvn clean install -DskipTests
+mvn clean install -DskipTests -Popenshift
+chmod u+x weboo-webapp/target/bin/webapp
 nohup sh weboo-webapp/target/bin/webapp > $LOG_DIR/server.log 2>&1 &
 
