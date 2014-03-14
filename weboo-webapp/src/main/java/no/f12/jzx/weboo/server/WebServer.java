@@ -5,9 +5,13 @@ import java.net.InetSocketAddress;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 public class WebServer {
+	
+	private static Logger LOG = LoggerFactory.getLogger(WebServer.class);
 
 	private Integer port;
 	private Server server;
@@ -36,6 +40,7 @@ public class WebServer {
 		int startPort = 0;
 		if (this.port != null) {
 			startPort = this.port;
+			LOG.info("Starting server on predetermined port: " + startPort);
 		}
 
 		if (!applicationContext.startsWith("/")) {
