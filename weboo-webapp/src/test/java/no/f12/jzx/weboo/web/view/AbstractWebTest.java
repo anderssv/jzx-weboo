@@ -1,7 +1,5 @@
 package no.f12.jzx.weboo.web.view;
 
-import java.io.File;
-
 import no.f12.jzx.weboo.domain.InformationRequest;
 import no.f12.jzx.weboo.server.WebServer;
 import no.f12.jzx.weboo.web.view.pages.AbstractPage;
@@ -16,11 +14,11 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.springframework.core.io.Resource;
 
 public abstract class AbstractWebTest {
 
 	protected static final String APPCONTEXT = "myapp";
-	private static final String WEBAPP_PATH = "src/main/webapp";
 
 	private static volatile WebServer server;
 
@@ -34,11 +32,12 @@ public abstract class AbstractWebTest {
 		// Start server
 		if (getUrlParameter() == null && server == null) {
 			WebServer setupServer = new WebServer();
-			setupServer.start(new File(WEBAPP_PATH), APPCONTEXT);
+			Resource webPath = WebServer.determineContextPath();
+			setupServer.start(webPath, APPCONTEXT);
 			server = setupServer;
 		}
 	}
-
+	
 	@Before
 	public void initializeDriver() {
 		this.driver = new HtmlUnitDriver();
