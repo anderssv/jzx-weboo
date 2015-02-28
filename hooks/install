@@ -1,6 +1,0 @@
-#!/bin/bash
-
-set -eux
-
-juju-log "Installing Java and Maven2 via apt-get"
-apt-get -y install maven2 default-jdk
