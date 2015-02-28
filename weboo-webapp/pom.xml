@@ -103,7 +103,7 @@
 								</goals>
 								<configuration>
 									<assembleDirectory>target</assembleDirectory>
-									<generateRepository>false</generateRepository>
+									<generateRepository>true</generateRepository>
 									<programs>
 										<program>
 											<mainClass>no.f12.jzx.weboo.server.WebServer</mainClass>

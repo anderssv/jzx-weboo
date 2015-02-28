@@ -1,17 +1,17 @@
 web:
   build: ./docker/app-node
-  command: sh weboo-webapp/target/weboo-webapp.war
-  ports:
-   - "8080"
-  volumes:
-   - .:/code
-lb:
-  build: ./docker/load-balancer
-  command: /start-haproxy
+  command: sh weboo-webapp/target/bin/webapp
   ports:
    - "8080:8080"
-  links:
-   - web
+  volumes:
+   - .:/code
+#lb:
+#  build: ./docker/load-balancer
+#  command: /start-haproxy
+#  ports:
+#   - "8080:8080"
+#  links:
+#   - web
 #redis:
 #  image: orchardup/redis
   
