@@ -1,6 +1,6 @@
 web:
   build: ./docker/app-node
-  command: sh weboo-webapp/target/bin/webapp
+  command: sh weboo-webapp/target/weboo-webapp.war
   ports:
    - "8080"
   volumes:
