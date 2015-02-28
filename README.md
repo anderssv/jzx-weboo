@@ -1,7 +1,5 @@
 Example application for JavaZone X
 
-It has been set up for running on Heroku, CloudFoundry and OpenShift.
-
 # Running with Docker
 I am testing a setup with Docker and a HAProxy in front. To use it, you need to:
 
