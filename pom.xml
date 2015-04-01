@@ -18,6 +18,19 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>repository.springframework.maven.milestone</id>
+			<name>Spring Framework Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<plugins>
@@ -71,6 +84,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>no.f12.jzx.weboo</groupId>
+				<artifactId>weboo-server</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>no.f12.jzx.weboo</groupId>
 				<artifactId>weboo-business</artifactId>
@@ -213,5 +231,6 @@
 	<modules>
 		<module>weboo-webapp</module>
 		<module>weboo-business</module>
+		<module>weboo-server</module>
 	</modules>
 </project>

@@ -119,13 +119,14 @@ public class WebServer {
 		ResourceLoader rs = new DefaultResourceLoader();
 		
 		List<Resource> resources = new ArrayList<Resource>();
-		resources.add(determineJarPath()); // One-jar packaging?
-		resources.add(new FileSystemResource("./weboo-webapp/src/main/webapp")); // Heroku
 		resources.add(new FileSystemResource("./src/main/webapp")); // Local run
+		resources.add(new FileSystemResource("./weboo-webapp/src/main/webapp")); // Heroku
+		resources.add(determineJarPath()); // One-jar packaging?
 		
 		for (Resource resource : resources) {
 			try {
-				if (resource.exists() && rs.getResource(resource.getURI().toString() + "/WEB-INF/web.xml").exists()) {
+				Boolean webInfExists =  rs.getResource(resource.getURI().toString() + "/WEB-INF/web.xml").exists();
+				if (resource.exists() && webInfExists) {
 				   	System.out.println(resource);
 				    return resource;
 				}
