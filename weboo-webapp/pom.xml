@@ -10,7 +10,6 @@
 	<groupId>no.f12.jzx.weboo</groupId>
 	<artifactId>weboo-webapp</artifactId>
 	<name>weboo-webapp</name>
-	<packaging>war</packaging>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -96,12 +95,6 @@
 			<id>package</id>
 			<build>
 				<plugins>
-					<plugin>
-						<artifactId>maven-war-plugin</artifactId>
-						<configuration>
-							<attachClasses>true</attachClasses>
-						</configuration>
-					</plugin>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>appassembler-maven-plugin</artifactId>

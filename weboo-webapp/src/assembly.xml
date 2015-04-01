@@ -22,5 +22,11 @@
 			<fileMode>0755</fileMode>
 			<lineEnding>unix</lineEnding>
 		</fileSet>
+		<fileSet>
+			<directory>src/main/webapp</directory>
+			<outputDirectory>webapp</outputDirectory>
+			<fileMode>0555</fileMode>
+			<lineEnding>unix</lineEnding>
+		</fileSet>
 	</fileSets>
 </assembly>

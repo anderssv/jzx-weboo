@@ -121,7 +121,8 @@ public class WebServer {
 		List<Resource> resources = new ArrayList<Resource>();
 		resources.add(new FileSystemResource("./src/main/webapp")); // Local run
 		resources.add(new FileSystemResource("./weboo-webapp/src/main/webapp")); // Heroku
-		resources.add(determineJarPath()); // One-jar packaging?
+		resources.add(new FileSystemResource("./webapp")); // Zip packaging
+		resources.add(determineJarPath()); // One-jar packaging
 		
 		for (Resource resource : resources) {
 			try {
