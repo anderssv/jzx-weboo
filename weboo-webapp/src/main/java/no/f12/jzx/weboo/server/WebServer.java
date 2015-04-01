@@ -1,15 +1,21 @@
 package no.f12.jzx.weboo.server;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 import org.springframework.util.Assert;
 
@@ -110,30 +116,30 @@ public class WebServer {
 	}
 
 	public static Resource determineContextPath() {
-		Resource directFile = new FileSystemResource("./src/main/webapp");
-		Resource herokuPath = new FileSystemResource("./weboo-webapp/src/main/webapp");
-
+		ResourceLoader rs = new DefaultResourceLoader();
+		
+		List<Resource> resources = new ArrayList<Resource>();
+		resources.add(determineJarPath()); // One-jar packaging?
+		resources.add(new FileSystemResource("./weboo-webapp/src/main/webapp")); // Heroku
+		resources.add(new FileSystemResource("./src/main/webapp")); // Local run
+		
+		for (Resource resource : resources) {
+			try {
+				if (resource.exists() && rs.getResource(resource.getURI().toString() + "/WEB-INF/web.xml").exists()) {
+				   	System.out.println(resource);
+				    return resource;
+				}
+			} catch (IOException e) {
+				throw new IllegalStateException("Could not check for web.xml in " + resource);
+			}
+		}
+		throw new IllegalStateException("Could not determine location of webapp to load! " + resources);
+	}
+	
+	private static Resource determineJarPath() {
 		URL jarUrl = WebServer.class.getProtectionDomain().getCodeSource().getLocation();
         Resource warLocation = new UrlResource(jarUrl);
-        Resource webInf = null;
-        try {
-			webInf = new UrlResource(new URL(jarUrl, "WEB-INF/web.xml"));
-		} catch (MalformedURLException e) {
-			// Should never occur
-		}
-		
-        if (webInf.exists()) {
-        	System.out.println(warLocation);
-        	return warLocation;
-        } else if (herokuPath.exists()) {
-			System.out.println(herokuPath);
-			return herokuPath;
-		} else if (directFile.exists()) {
-        	System.out.println(directFile);
-			return directFile;
-		}
-		
-		return warLocation;
+        return warLocation;
 	}
 
 	private static int determineServerPort() {

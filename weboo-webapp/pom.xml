@@ -88,7 +88,7 @@
 
 	<profiles>
 		<profile>
-			<id>generate-script</id>
+			<id>package</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -111,6 +111,22 @@
 										</program>
 									</programs>
 								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>2.5.3</version>
+						<configuration>
+							<descriptor>src/assembly.xml</descriptor>
+						</configuration>
+						<executions>
+							<execution>
+								<id>create-archive</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
 							</execution>
 						</executions>
 					</plugin>
@@ -149,12 +165,14 @@
 
 											<mainClass>no.f12.jzx.weboo.server.WebServer</mainClass>
 										</transformer>
-									    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-									    	<resource>META-INF/spring.handlers</resource>
-									    </transformer>
-									    <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-									    	<resource>META-INF/spring.schemas</resource>
-									    </transformer>
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+											<resource>META-INF/spring.handlers</resource>
+										</transformer>
+										<transformer
+											implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+											<resource>META-INF/spring.schemas</resource>
+										</transformer>
 									</transformers>
 									<createDependencyReducedPom>false</createDependencyReducedPom>
 									<filters>
