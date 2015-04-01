@@ -86,11 +86,6 @@
 		<dependencies>
 			<dependency>
 				<groupId>no.f12.jzx.weboo</groupId>
-				<artifactId>weboo-server</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>no.f12.jzx.weboo</groupId>
 				<artifactId>weboo-business</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -231,6 +226,5 @@
 	<modules>
 		<module>weboo-webapp</module>
 		<module>weboo-business</module>
-		<module>weboo-server</module>
 	</modules>
 </project>
