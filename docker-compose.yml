@@ -1,6 +1,6 @@
 web:
   build: ./docker/app-node
-  command: sh weboo-webapp/target/bin/webapp
+  command: bash /start.sh weboo-webapp/target/bin/webapp
   ports:
    - "8080"
   volumes:
