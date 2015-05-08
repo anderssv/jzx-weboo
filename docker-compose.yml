@@ -1,4 +1,5 @@
 web:
+#  image: 188.226.158.138:32768/jzxweboo_web
   build: ./docker/app-node
   command: bash /start.sh weboo-webapp/target/bin/webapp
   ports:
@@ -6,6 +7,7 @@ web:
   volumes:
    - .:/code
 lb:
+#  image: 188.226.158.138:32768/jzxweboo_lb 
   build: ./docker/load-balancer
   command: /start-haproxy
   ports:
