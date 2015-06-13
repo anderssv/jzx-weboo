@@ -89,6 +89,12 @@
 	<profiles>
 		<profile>
 			<id>package</id>
+			<activation>
+				<property>
+					<name>platform-target</name>
+					<value>openshift</value>
+				</property>
+			</activation>
 			<build>
 				<plugins>
 					<plugin>
